@@ -1,0 +1,108 @@
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: Tajawal;
+}
+a {
+    color: #834A9C;
+}
+.form-check {
+    padding-right: 1.25rem;
+    padding-left: 0;
+}
+.form-check-input {
+    margin-right: -1.25rem;
+    margin-left: 0;
+}
+.btn-primary {
+    background: #834A9C;
+    border: 1px solid #834A9C;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled):hover, .btn-primary:not(:disabled):not(.disabled).active, .show>.btn-primary.dropdown-toggle {
+    background: #834A9C;
+    border: 1px solid #834A9C;
+}
+.material-half-bg .cover {
+    background: #834A9C;
+}
+.app-header {
+    padding-right: 0;
+    padding-left: 30px;
+    background: #834A9C;
+}
+.app-sidebar {
+    right: 0;
+    left: auto;
+}
+.app-menu {
+    padding-right: 0;
+}
+.app-menu__item.active, .app-menu__item:hover, .app-menu__item:focus {
+    border-left: 0;
+    border-right: 3px solid #834A9C;
+}
+.dropdown-menu.dropdown-menu-right{
+    left: 0;
+    right: auto;
+    text-align: right;
+}
+.user .user-tabs .nav-link.active {
+    border-right: 3px solid #834A9C;
+    border-left: 0;
+}
+.user .user-tabs {
+    padding-right: 0;
+}
+@media (min-width: 768px) {
+.app-content {
+    margin-right: 230px;
+    margin-left: 0;
+}
+.app-header__logo {
+    background: #834A9C;
+}
+.sidebar-mini.sidenav-toggled .app-content {
+    margin-left: 0;
+    margin-right: 50px;
+}
+}
+
+.datatable {
+    width: 100% !important;
+}
+
+table.dataTable tbody td.select-checkbox::before,
+table.dataTable tbody td.select-checkbox::after,
+table.dataTable tbody th.select-checkbox::before,
+table.dataTable tbody th.select-checkbox::after {
+    top: 50%;
+}
+
+.dataTables_length,
+.dataTables_filter,
+.dt-buttons {
+    margin-bottom: 0.333em;
+    margin-top: .2rem;
+}
+
+.dataTables_filter {
+    margin-right: .2rem;
+}
+
+.dt-buttons .btn {
+    margin-left: 0.333em;
+    border-radius: 0;
+}
+
+.table.datatable {
+    box-sizing: border-box;
+    border-collapse: collapse;
+}
+
+table.dataTable thead th {
+    border-bottom: 2px solid #c8ced3;
+}
+
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+    border-bottom: 1px solid #c8ced3;
+}

@@ -1,0 +1,15 @@
+<script src="<?php echo e(asset('newpage/js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/jquery-migrate-3.0.1.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/popper.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/jquery.easing.1.3.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/jquery.waypoints.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/jquery.stellar.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/owl.carousel.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/jquery.magnific-popup.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/aos.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/jquery.animateNumber.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/bootstrap-datepicker.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/scrollax.min.js')); ?>"></script>
+<script src="<?php echo e(asset('newpage/js/main.js')); ?>"></script>
+<?php /**PATH C:\xampp\htdocs\woody-factory\resources\views/site/partials/scripts.blade.php ENDPATH**/ ?>
