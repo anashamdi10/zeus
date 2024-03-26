@@ -1,17 +1,24 @@
 @extends('layouts.default-layout.master')
 
 @section('title'){{ __('main.Slides') }}
-why shoose us
+Our Services
 @endsection
 
 @section('content')
 @component('components.breadcrumb')
 @slot('breadcrumb_title')
-<h3>why shoose us </h3>
+<h3>Our Services </h3>
 @endslot
-<li class="breadcrumb-item"> why shoose us</li>
+<li class="breadcrumb-item"> Our Services</li>
+@slot('breadcrumb_icon')
+<li>
+    <a href="{{route('services.create')}}" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="plus"></i></a>
 
+</li>
+@endslot
 @endcomponent
+
+
 
 <div class="container-fluid">
     <div class="row">

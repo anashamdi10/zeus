@@ -159,24 +159,8 @@ class SlideController extends Controller
     public function update(EditSlideRequest $request,$id)
     {
         $data=$request->all();
-        if ($request->hasFile('image')) {
-
-
-            // update image
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/slides/', $filename);
-            $data['image'] = $filename;
-            
-            // delete image 
-            $info = Slide::find($id);
-            $oldphotoPath = $info->image;
-            if (file_exists('uploads/slides/' . $oldphotoPath) and !empty($oldphotoPath)) {
-                unlink('uploads/slides/' . $oldphotoPath);
-            }
-        }
-        Slide::find($id)->update($data);
+    
+        Slider::find($id)->update($data);
         Session::flash('success','تم تعديل البيانات بنجاح');
         return redirect()->back();
     }
@@ -194,15 +178,8 @@ class SlideController extends Controller
 
     public function delete($id)
     {
-        $info = Slide::find($id);
-
-        // delete  image
-        $oldphotoPath = $info->image;
-        if (file_exists('uploads/slides/' . $oldphotoPath) and !empty($oldphotoPath)) {
-            unlink('uploads/slides/' . $oldphotoPath);
-        }
-
-        $flag = Slide::find($id)->delete();
+        
+        $flag = Slider::find($id)->delete();
 
         if ($flag) {
             Session::flash('success', 'تم حذف البيانات بنجاح');

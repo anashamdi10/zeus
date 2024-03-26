@@ -115,30 +115,17 @@
                 <div class="col-lg-8 d-flex align-items-stretch">
                     <div class="icon-boxes d-flex flex-column justify-content-center">
                         <div class="row">
-                            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                                <div class="icon-box mt-4 mt-xl-0">
-                                    <img src="{{asset('zeus/assets/img/icons/1.webp')}}" alt="Zeus Orginc Crops" />
-                                    <h3>
-                                        Orginc<br />
-                                        Crops
-                                    </h3>
-                                    <p>We uses Organic crops from the starts of the Agriulture process as they are the main core of our industry</p>
+                            @foreach($why_us as $row)
+                                <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                                
+                                    <div class="icon-box mt-4 mt-xl-0">
+                                        <img src="{{ asset('uploads/why_us/' . $row->image) }}" alt="Zeus Orginc Crops" />
+                                        <h3>{{$row->title}}</h3>
+                                        <p>{{$row->pragraph_en}}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-                                <div class="icon-box mt-4 mt-xl-0">
-                                    <img src="{{asset('zeus/assets/img/icons/2.webp')}}" alt="Zeus Qulity " />
-                                    <h3>Qulity is what defines Us</h3>
-                                    <p>the Qualkity of the products is what we make our crops Qunic & delicious</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-                                <div class="icon-box mt-4 mt-xl-0">
-                                    <img src="{{asset('zeus/assets/img/icons/3.webp')}}" alt="Zues specialization" />
-                                    <h3>The specialization</h3>
-                                    <p>Zeus is consists of kind of specilized teams every team is specilized in one thing to maintain our qulity</p>
-                                </div>
-                            </div>
+                            @endforeach
+                            
                         </div>
                     </div>
                     <!-- End .content-->

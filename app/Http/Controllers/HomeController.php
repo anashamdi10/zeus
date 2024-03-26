@@ -15,6 +15,7 @@ use App\Models\Page;
 use App\Models\Slider;
 use App\Models\Video;
 use App\Models\Counter;
+use App\Models\WhyUs;
 
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
@@ -26,8 +27,9 @@ class HomeController extends Controller
         $videos = Video::all()->toArray();
         $abouts = About::select('title', 'pragraph' , 'image')->get();
         $counter = Counter::select("id", "facilities", "Porducts", "Produced_Tons_in_2023", 'Oustees_Clients')->get();
+        $why_us = WhyUs::select("id", "title", "pragraph_en", "image")->get();
         
-        return view('site.pages.index',compact('sliders', 'videos' , 'abouts', 'counter'));
+        return view('site.pages.index',compact('sliders', 'videos' , 'abouts', 'counter' , 'why_us'));
     }
     public function indexAr(){
 
@@ -35,8 +37,8 @@ class HomeController extends Controller
         $videos = Video::all()->toArray();
         $abouts = About::select('title_ar', 'pragraph_ar' , 'image')->get();
         $counter = Counter::select("id", "facilities", "Porducts", "Produced_Tons_in_2023", 'Oustees_Clients')->get();
-        
-        return view('site.pages.index_ar',compact('sliders', 'videos' , 'abouts', 'counter'));
+        $why_us = WhyUs::select("id", "title_ar", "pragraph_ar", "image")->get();
+        return view('site.pages.index_ar',compact('sliders', 'videos' , 'abouts', 'counter' ,'why_us' ));
     }
     
     public function rateIndex(){

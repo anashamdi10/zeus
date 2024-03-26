@@ -69,6 +69,10 @@
                     <li class="dropdown">
                         <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="info"></i><span>{{ __('main.Site_Data') }} </span></a>
                         <ul class="nav-submenu menu-content">
+
+                            <li>
+                                <a class="@if(Route::current()->getName() == 'admin.slides') active @endif" href="{{route('admin.slides')}}"><span>{{ __('main.Slides') }}</span></a>
+                            </li>
                             <li>
                                 <a class="@if(Route::current()->getName() == 'admin.about') active @endif" href="{{route('admin.about')}}"><span>About</span></a>
                             </li>
@@ -77,12 +81,13 @@
                                 <a class="@if(Route::current()->getName() == 'admin.counter') active @endif" href="{{route('admin.counter')}}"><span>counter</span></a>
                             </li>
                             <li>
-                                <a class="@if(Route::current()->getName() == 'admin.why_shose_us') active @endif" href="{{route('admin.why_shose_us')}}"><span>why_shose_us</span></a>
+                                <a class="@if(Route::current()->getName() == 'admin.why') active @endif" href="{{route('admin.why')}}"><span>why_shose_us</span></a>
+                            </li>
+                            <li>
+                                <a class="@if(Route::current()->getName() == 'admin.services') active @endif" href="{{route('admin.services')}}"><span>our services</span></a>
                             </li>
 
-                            <li>
-                                <a class="@if(Route::current()->getName() == 'admin.slides') active @endif" href="{{route('admin.slides')}}"><span>{{ __('main.Slides') }}</span></a>
-                            </li>
+                           
 
 
 

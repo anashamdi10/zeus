@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\NewletterController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\FlashDealController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\WhyController;
+use App\Http\Controllers\Admin\ServicesController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -174,12 +176,17 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         
         
         Route::get('about', [AboutController::class, 'index'])->name('admin.about');
-
+        
         Route::get('counter', [CounterController::class, 'index'])->name('admin.counter');
         Route::put('counter/{id}/update', [CounterController::class, 'update'])->name('counter.update');
         
-
         
+        Route::get('why_shoose_us', [WhyController::class, 'index'])->name('admin.why');
+        Route::get('why_shoose_us/{id}/edit', [WhyController::class, 'edit'])->name('why.edit');
+        Route::put('why_shoose_us/{id}/update', [WhyController::class, 'update'])->name('why.update');
+        
+        Route::get('our_services', [ServicesController::class, 'index'])->name('admin.services');
+        Route::get('our_services/create', [ServicesController::class, 'create'])->name('services.create');
         
         // Route::get('about/create', [AboutController::class, 'create'])->name('about.create');
         // Route::post('about/store', [AboutController::class, 'store'])->name('about.store');

@@ -33,9 +33,11 @@ class EditSlideRequest extends FormRequest
                 {
                     return array(
                         'title'=>'required',
+                        'title_ar' => 'required',
                         'sub_title'=>'required',
+                        'sub_title_ar' => 'required',
                         'link'=>'required',
-                        'image'=> 'mimes:jpeg,bmp,png,gif,jpg,webp|max:5000',
+                        
 
 
                     );
@@ -45,9 +47,11 @@ class EditSlideRequest extends FormRequest
 
                     return array(
                         'title' => 'required',
+                        'title_ar' => 'required',
                         'sub_title' => 'required',
+                        'sub_title_ar' => 'required',
                         'link' => 'required',
-                        'image'=> 'mimes:jpeg,bmp,png,gif,jpg,webp|max:5000',
+                        
                     );
                 }
             case 'PATCH':

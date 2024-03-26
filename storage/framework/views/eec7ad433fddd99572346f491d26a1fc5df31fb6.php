@@ -1,33 +1,34 @@
-@extends('site.app')
 
-@section('title')
-{{ __('main.home') }}
-@endsection
+
+<?php $__env->startSection('title'); ?>
+<?php echo e(__('main.home')); ?>
+
+<?php $__env->stopSection(); ?>
 <!-- ======= Header ======= -->
-@include('site.partials.header_ar')
+<?php echo $__env->make('site.partials.header_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- End Header -->
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
 <section id="hero" class="d-flex align-items-center">
-    @foreach($videos as $row)
+    <?php $__currentLoopData = $videos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <video autoplay muted loop id="myVideo">
-        <source src="{{ asset('uploads/video')}}/{{$row['video']}}" type="video/mp4" />
+        <source src="<?php echo e(asset('uploads/video')); ?>/<?php echo e($row['video']); ?>" type="video/mp4" />
     </video>
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <div class="container position-absolute" data-aos="fade-up" data-aos-delay="350">
         <div class="swiper tag" id="tag">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
 
-                @foreach($sliders as $row)
+                <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="swiper-slide">
-                    <h2>{{$row['title_ar']}}</h2>
-                    <h4>{{$row['sub_title_ar']}}</h4>
-                    <a href="{{$row['link']}}" class="btn-get-started scrollto">Get Started</a>
+                    <h2><?php echo e($row['title_ar']); ?></h2>
+                    <h4><?php echo e($row['sub_title_ar']); ?></h4>
+                    <a href="<?php echo e($row['link']); ?>" class="btn-get-started scrollto">Get Started</a>
                 </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </div>
         </div>
@@ -52,15 +53,15 @@
     <section id="about" class="about">
         <div class="container">
             <div class="row content">
-                @foreach($abouts as $row)
+                <?php $__currentLoopData = $abouts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-lg-5" data-aos="fade-right" data-aos-delay="200">
-                    <img class="about-img" src="{{ asset('uploads/about/' . $row->image) }}" alt="about" />
+                    <img class="about-img" src="<?php echo e(asset('uploads/about/' . $row->image)); ?>" alt="about" />
                 </div>
                 <div class="col-lg-7 pt-4 pt-lg-0 justify-content-center" data-aos="fade-left" data-aos-delay="100">
-                    <h1>{{$row['title_ar']}}</h1>
-                    <p>{{$row['pragraph_ar']}}</p>
+                    <h1><?php echo e($row['title_ar']); ?></h1>
+                    <p><?php echo e($row['pragraph_ar']); ?></p>
                 </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </section>
@@ -70,31 +71,31 @@
     <section id="counts" class="counts">
         <div class="container">
             <div class="row counters">
-                @foreach($counter as $row)
+                <?php $__currentLoopData = $counter; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="100">
                     <i class="bx bxs-building bx-lg"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{$row->facilities}}" data-purecounter-duration="1" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->facilities); ?>" data-purecounter-duration="1" class="purecounter"></span>
                     <p>مرافق</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="200">
                     <i class="bx bxs-leaf bx-lg"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{$row->Porducts}}" data-purecounter-duration="2" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Porducts); ?>" data-purecounter-duration="2" class="purecounter"></span>
                     <p>منتجات</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="300">
                     <i class="bx bxs-package bx-lg"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{$row->Produced_Tons_in_2023}}" data-purecounter-duration="3" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Produced_Tons_in_2023); ?>" data-purecounter-duration="3" class="purecounter"></span>
                     <p>إنتاج طن في عام 2023</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="400">
                     <i class="bx bxs-user bx-lg"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{$row->Oustees_Clients}}" data-purecounter-duration="4" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Oustees_Clients); ?>" data-purecounter-duration="4" class="purecounter"></span>
                     <p>عملاء الغرباء</p>
                 </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </section>
@@ -116,16 +117,16 @@
                 <div class="col-lg-8 d-flex align-items-stretch">
                     <div class="icon-boxes d-flex flex-column justify-content-center">
                         <div class="row">
-                        @foreach($why_us as $row)
+                        <?php $__currentLoopData = $why_us; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                                 
                                     <div class="icon-box mt-4 mt-xl-0">
-                                        <img src="{{ asset('uploads/why_us/' . $row->image) }}" alt="Zeus Orginc Crops" />
-                                        <h3>{{$row->title_ar}}</h3>
-                                        <p>{{$row->pragraph_ar}}</p>
+                                        <img src="<?php echo e(asset('uploads/why_us/' . $row->image)); ?>" alt="Zeus Orginc Crops" />
+                                        <h3><?php echo e($row->title_ar); ?></h3>
+                                        <p><?php echo e($row->pragraph_ar); ?></p>
                                     </div>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             
                         </div>
                     </div>
@@ -154,7 +155,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/4.webp')}}" alt="Zeus Service Land Reclamation" />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/4.webp')); ?>" alt="Zeus Service Land Reclamation" />
                                 </div>
                                 <h4>Land Reclamation</h4>
                                 <p>Implementing state-of-the-art technology for efficient land reclamation.</p>
@@ -163,7 +164,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/5.webp')}}" alt="Zeus Service  Fertilizer Application" />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/5.webp')); ?>" alt="Zeus Service  Fertilizer Application" />
                                 </div>
                                 <h4>Fertilizer Application</h4>
                                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
@@ -172,7 +173,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/6.webp')}}" alt="Zeus Service Harvesting " />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/6.webp')); ?>" alt="Zeus Service Harvesting " />
                                 </div>
                                 <h4>Harvesting</h4>
                                 <p>Meticulously harvesting fruits in accordance with the highest European quality standards.</p>
@@ -181,7 +182,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/7.webp')}}" alt="Zeus Service Transport to Zeus Facilities " />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/7.webp')); ?>" alt="Zeus Service Transport to Zeus Facilities " />
                                 </div>
                                 <h4>Transport to Zeus Facilities</h4>
                                 <p>Safely and efficiently transporting the harvested produce to Zeus facilities.</p>
@@ -190,7 +191,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="500">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/8.webp')}}" alt="Zeus Service Sorting " />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/8.webp')); ?>" alt="Zeus Service Sorting " />
                                 </div>
                                 <h4>Sorting services</h4>
                                 <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
@@ -199,7 +200,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="600">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/9.webp')}}" alt="Zeus Service Packaging " />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/9.webp')); ?>" alt="Zeus Service Packaging " />
                                 </div>
                                 <h4>Packaging services</h4>
                                 <p>Employing advanced packaging techniques to safeguard product integrity.ٍ</p>
@@ -208,7 +209,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="700">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/10.webp')}}" alt="Zeus Service Storage " />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/10.webp')); ?>" alt="Zeus Service Storage " />
                                 </div>
                                 <h4>Storage Stage</h4>
                                 <p>Possessing state-of-the-art frozen and refrigerated storage facilities.</p>
@@ -217,7 +218,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="800">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/11.webp')}}" alt="Zeus Service  Logistics " />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/11.webp')); ?>" alt="Zeus Service  Logistics " />
                                 </div>
                                 <h4>Logistics Methods</h4>
                                 <p>Utilizing refrigerated trailers for overland transportation.Employing refrigerated and frozen containers for sea transportation</p>
@@ -226,7 +227,7 @@
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="900">
                                 <div class="icon">
-                                    <img src="{{asset('zeus/assets/img/icons/12.webp')}}" alt="Zeus Service Door-to-Door " />
+                                    <img src="<?php echo e(asset('zeus/assets/img/icons/12.webp')); ?>" alt="Zeus Service Door-to-Door " />
                                 </div>
                                 <h4>Door-to-Door Service</h4>
                                 <p>Providing convenient door-to-door transportation services.</p>
@@ -253,7 +254,7 @@
                 <!-- Start Column 2 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
                     <a class="product-item" href="404.html">
-                        <img src="{{asset('zeus/assets/img/product1.webp')}}" onmouseover="this.src='{{asset("zeus/assets/img/product2.webp")}}'" onmouseout="this.src='{{asset("zeus/assets/img/product1.webp")}}'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
+                        <img src="<?php echo e(asset('zeus/assets/img/product1.webp')); ?>" onmouseover="this.src='<?php echo e(asset("zeus/assets/img/product2.webp")); ?>'" onmouseout="this.src='<?php echo e(asset("zeus/assets/img/product1.webp")); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
                         <h3 class="product-title">Noval orange</h3>
                         <strong class="product-price"> Framed in own Farms </strong>
 
@@ -267,7 +268,7 @@
                 <!-- Start Column 3 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
                     <a class="product-item" href="404.html">
-                        <img src="{{asset('zeus/assets/img/product1.webp')}}" onmouseover="this.src='{{asset("zeus/assets/img/product2.webp")}}'" onmouseout="this.src='{{asset("zeus/assets/img/product1.webp")}}'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
+                        <img src="<?php echo e(asset('zeus/assets/img/product1.webp')); ?>" onmouseover="this.src='<?php echo e(asset("zeus/assets/img/product2.webp")); ?>'" onmouseout="this.src='<?php echo e(asset("zeus/assets/img/product1.webp")); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
                         <h3 class="product-title">Noval orange</h3>
                         <strong class="product-price">Framed in own Farms</strong>
 
@@ -281,7 +282,7 @@
                 <!-- Start Column 4 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
                     <a class="product-item" href="404.html">
-                        <img src="{{asset('zeus/assets/img/product1.webp')}}" onmouseover="this.src='{{asset("zeus/assets/img/product2.webp")}}'" onmouseout="this.src='{{asset("zeus/assets/img/product1.webp")}}'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
+                        <img src="<?php echo e(asset('zeus/assets/img/product1.webp')); ?>" onmouseover="this.src='<?php echo e(asset("zeus/assets/img/product2.webp")); ?>'" onmouseout="this.src='<?php echo e(asset("zeus/assets/img/product1.webp")); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
                         <h3 class="product-title">Noval orange</h3>
                         <strong class="product-price">Framed in own Farms</strong>
 
@@ -324,7 +325,7 @@
                     <!-- Slides -->
                     <div class="swiper-slide">
                         <div class="example-2 card">
-                            <div class="wrapper" style="background: url({{asset('zeus/assets/img/blog1.webp')}}) center/cover no-repeat">
+                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
                                 <div class="header">
                                     <div class="date">
                                         <span class="day">12</span>
@@ -347,7 +348,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="example-2 card">
-                            <div class="wrapper" style="background: url({{asset('zeus/assets/img/blog1.webp')}}) center/cover no-repeat">
+                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
                                 <div class="header">
                                     <div class="date">
                                         <span class="day">12</span>
@@ -370,7 +371,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="example-2 card">
-                            <div class="wrapper" style="background: url({{asset('zeus/assets/img/blog1.webp')}}) center/cover no-repeat">
+                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
                                 <div class="header">
                                     <div class="date">
                                         <span class="day">12</span>
@@ -393,7 +394,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="example-2 card">
-                            <div class="wrapper" style="background: url({{asset('zeus/assets/img/blog1.webp')}}) center/cover no-repeat">
+                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
                                 <div class="header">
                                     <div class="date">
                                         <span class="day">12</span>
@@ -416,7 +417,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="example-2 card">
-                            <div class="wrapper" style="background: url({{asset('zeus/assets/img/blog1.webp')}}) center/cover no-repeat">
+                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
                                 <div class="header">
                                     <div class="date">
                                         <span class="day">12</span>
@@ -439,7 +440,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="example-2 card">
-                            <div class="wrapper" style="background: url({{asset('zeus/assets/img/blog1.webp')}}) center/cover no-repeat">
+                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
                                 <div class="header">
                                     <div class="date">
                                         <span class="day">12</span>
@@ -535,7 +536,8 @@
     <!-- End Contact Section -->
 </main>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
-@endpush
+<?php $__env->startPush('scripts'); ?>
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\zeus\resources\views/site/pages/index_ar.blade.php ENDPATH**/ ?>

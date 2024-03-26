@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class WhyUs extends Model
 {
-    protected $fillable=['id','name_ar','name_en','desc_ar','desc_en','image'];
+   
+    /**
+     * @var string
+     */
+    protected $table = 'why_shoose';
+
+    protected $fillable=['id','title','title_ar','pragraph_en','pragraph_ar','image'];
 
 
 

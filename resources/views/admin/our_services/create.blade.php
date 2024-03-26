@@ -1,7 +1,7 @@
 @extends('layouts.default-layout.master')
 
 @section('title'){{ __('main.Edit_Slide') }}
-why shoose us 
+>Our Services
 @endsection
 
 @push('css')
@@ -10,9 +10,9 @@ why shoose us
 @section('content')
 @component('components.breadcrumb')
 @slot('breadcrumb_title')
-<h3>why shoose us Edit / {{$info->title}} </h3>
+<h3>Our Services  </h3>
 @endslot
-<li class="breadcrumb-item"> why shoose us  </li>
+<li class="breadcrumb-item"> >Our Services  </li>
 @slot('breadcrumb_icon')
 @endslot
 @endcomponent
@@ -24,20 +24,20 @@ why shoose us
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action={{route('why.update',$info->id)}} method="post" enctype="multipart/form-data">
+                            <form action='#' method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
-                                {{method_field('PUT')}}
+                                
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label class="col-form-label pt-0" for="title">Title en </label>
-                                            <input class="form-control" value="{{$info->title}}" id="title" type="text" name="title">
+                                            <input class="form-control"  id="title" type="text" name="title">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label class="col-form-label pt-0" for="title_ar">Title ar </label>
-                                            <input class="form-control" value="{{$info->title_ar}}" id="title_ar" type="text" name="title_ar">
+                                            <input class="form-control" id="title_ar" type="text" name="title_ar">
                                         </div>
                                     </div>
 
@@ -46,19 +46,18 @@ why shoose us
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label class="col-form-label pt-0" for="sub_title">pragraph en </label>
-                                            <input class="form-control" value="{{$info->pragraph_en}}" id="pragraph_en" type="text" name="pragraph_en">
+                                            <input class="form-control" id="pragraph_en" type="text" name="pragraph_en">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label class="col-form-label pt-0" for="pragraph_ar">pragraph ar </label>
-                                            <input class="form-control" value="{{$info->pragraph_ar}}" id="pragraph_ar" type="text" name="pragraph_ar">
+                                            <input class="form-control"  id="pragraph_ar" type="text" name="pragraph_ar">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <img src="{{ asset('uploads/why_us/' . $info->image) }}" width="80px" height="80px" style="margin-bottom: 10px; " /> <br>
                                     <input id='image' name="image" type="file" class="form-control" >
                                 </div>
                                 
@@ -81,7 +80,7 @@ why shoose us
 
                                 <div class="d-flex align-items-center flex-wrap gap-3">
                                     <button type="submit" class="btn btn-primary">{{ __('main.Submit') }}</button>
-                                    <a href="{{route('admin.why')}}" class="btn btn-danger">{{ __('main.Cancel') }}</a>
+                                    <a href="{{route('admin.services')}}" class="btn btn-danger">{{ __('main.Cancel') }}</a>
                                 </div>
                             </form>
                         </div>

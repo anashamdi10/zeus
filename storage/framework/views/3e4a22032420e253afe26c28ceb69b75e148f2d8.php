@@ -1,19 +1,21 @@
-@extends('layouts.default-layout.master')
 
-@section('title'){{ __('main.Slides') }}
-{{ $title }}
-@endsection
 
-@section('content')
-@component('components.breadcrumb')
-@slot('breadcrumb_title')
+<?php $__env->startSection('title'); ?><?php echo e(__('main.Slides')); ?>
+
+<?php echo e($title); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<?php $__env->startComponent('components.breadcrumb'); ?>
+<?php $__env->slot('breadcrumb_title'); ?>
 <h3>About </h3>
-@endslot
+<?php $__env->endSlot(); ?>
 <li class="breadcrumb-item"> About</li>
-@slot('breadcrumb_icon')
+<?php $__env->slot('breadcrumb_icon'); ?>
 
-@endslot
-@endcomponent
+<?php $__env->endSlot(); ?>
+<?php echo $__env->renderComponent(); ?>
 
 <div class="container-fluid">
     <div class="row">
@@ -21,10 +23,12 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        @foreach($data as $row)
-                        <form action="{{route('about.update',$row->id)}}" method="post" enctype="multipart/form-data">
-                            {{csrf_field()}}
-                            {{method_field('PUT')}}
+                        <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <form action="<?php echo e(route('about.update',$row->id)); ?>" method="post" enctype="multipart/form-data">
+                            <?php echo e(csrf_field()); ?>
+
+                            <?php echo e(method_field('PUT')); ?>
+
                             <div class=" mb-3">
                                 <div style="text-align: right;">
                                     <buttom id='btn' onclick="edit()" style="color: #3a9aa8;" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="edit"></i></buttom>
@@ -42,10 +46,10 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input id='title' name="title" class="form-control" type="text" readonly value="{{$row->title}}">
+                                        <input id='title' name="title" class="form-control" type="text" readonly value="<?php echo e($row->title); ?>">
                                     </div>
                                     <div class="col-md-6">
-                                        <input id='title_ar' name="title_ar" class="form-control" type="text" readonly value="{{$row->title_ar}}" style="text-align: right;">
+                                        <input id='title_ar' name="title_ar" class="form-control" type="text" readonly value="<?php echo e($row->title_ar); ?>" style="text-align: right;">
                                     </div>
 
                                 </div>
@@ -56,7 +60,8 @@
                                     <div class="form-group mb-3">
                                         <h4>Pragrap Enh</h4>
                                         <textarea name="pragraph" id='pragraph' class="form-control" rows="10" style="text-align: left;" readonly>
-                                        {{$row->pragraph}}
+                                        <?php echo e($row->pragraph); ?>
+
                                         </textarea>
 
                                     </div>
@@ -65,7 +70,8 @@
                                     <div class="form-group mb-3">
                                         <h4 >Pragraph Ar</h4>
                                         <textarea name="pragraph_ar" id='pragraph_ar' class="form-control" rows="10" style="text-align: right;" readonly>
-                                        {{$row->pragraph_ar}}
+                                        <?php echo e($row->pragraph_ar); ?>
+
                                         </textarea>
 
                                     </div>
@@ -76,24 +82,24 @@
 
                             <div class="form-group mb-3">
                                 <h4>image</h4>
-                                <img src="{{ asset('uploads/about/' . $row->image) }}" width="80px" height="80px" style="margin-bottom: 10px; " /> <br>
+                                <img src="<?php echo e(asset('uploads/about/' . $row->image)); ?>" width="80px" height="80px" style="margin-bottom: 10px; " /> <br>
                                 <input id='image' name="image" type="file" class="form-control" style="display: none;" value="" id="">
                             </div>
                         </form>
-                        @endforeach
-                        @if (count($errors) > 0)
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php if(count($errors) > 0): ?>
                         <ul>
-                            @foreach ($errors->all() as $error)
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="mb-3">
-                                <div class="alert alert-danger outline">{{ $error }}</div>
+                                <div class="alert alert-danger outline"><?php echo e($error); ?></div>
                             </li>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
-                        @endif
+                        <?php endif; ?>
 
-                        @if(Session::has('success'))
-                        <div class="alert alert-success outline">{{Session::get('success')}}</div>
-                        @endif
+                        <?php if(Session::has('success')): ?>
+                        <div class="alert alert-success outline"><?php echo e(Session::get('success')); ?></div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -127,4 +133,5 @@
 </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.default-layout.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\zeus\resources\views/admin/about/index.blade.php ENDPATH**/ ?>
