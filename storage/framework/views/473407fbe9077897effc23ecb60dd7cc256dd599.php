@@ -15,7 +15,8 @@
 					<li><a class="nav-link scrollto" href="Facilities.html">Facilities</a></li>
 					<li><a class="nav-link scrollto" href="shop.html">Products</a></li>
 					<li><a class="getstarted scrollto" href="#contact">Reach Us now</a></li>
-					<li><a class="getstarted scrollto" href="Ar.html">AR</a></li>
+
+					<li><a class="getstarted scrollto" href="<?php echo e(route('indexAr.show')); ?>">AR</a></li>
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav>

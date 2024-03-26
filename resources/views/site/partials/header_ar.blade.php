@@ -16,7 +16,7 @@
 					<li><a class="nav-link scrollto" href="shop.html">Products</a></li>
 					<li><a class="getstarted scrollto" href="#contact">Reach Us now</a></li>
 
-					<li><a class="getstarted scrollto" href="{{route('indexAr.show')}}">AR</a></li>
+					<li><a class="getstarted scrollto" href="{{route('index.show')}}">En</a></li>
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav>

@@ -12,7 +12,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $data = About::select("id", "title", "pragraph", "image")->get();
+        $data = About::select("id", "title", "title_ar", "pragraph", "pragraph_ar", "image")->get();
         
         return view('admin.about.index' , ['data'=>$data]);
     }

@@ -5,9 +5,10 @@
 
 <?php $__env->stopSection(); ?>
 <!-- ======= Header ======= -->
-<?php echo $__env->make('site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('site.partials.header_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- End Header -->
 <?php $__env->startSection('content'); ?>
+
 
 <section id="hero" class="d-flex align-items-center">
     <?php $__currentLoopData = $videos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -23,8 +24,8 @@
 
                 <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="swiper-slide">
-                    <h2><?php echo e($row['title']); ?></h2>
-                    <h4><?php echo e($row['sub_title']); ?></h4>
+                    <h2><?php echo e($row['title_ar']); ?></h2>
+                    <h4><?php echo e($row['sub_title_ar']); ?></h4>
                     <a href="<?php echo e($row['link']); ?>" class="btn-get-started scrollto">Get Started</a>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -57,8 +58,8 @@
                     <img class="about-img" src="<?php echo e(asset('uploads/about/' . $row->image)); ?>" alt="about" />
                 </div>
                 <div class="col-lg-7 pt-4 pt-lg-0 justify-content-center" data-aos="fade-left" data-aos-delay="100">
-                    <h1><?php echo e($row['title']); ?></h1>
-                    <p><?php echo e($row['pragraph']); ?></p>
+                    <h1><?php echo e($row['title_ar']); ?></h1>
+                    <p><?php echo e($row['pragraph_ar']); ?></p>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
@@ -552,4 +553,4 @@
 
 <?php $__env->startPush('scripts'); ?>
 <?php $__env->stopPush(); ?>
-<?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\zeus-website\resources\views/site/pages/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\zeus-website\resources\views/site/pages/index_ar.blade.php ENDPATH**/ ?>

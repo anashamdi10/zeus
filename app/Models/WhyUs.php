@@ -10,7 +10,5 @@ class WhyUs extends Model
 
 
 
-        public function getImageAttribute(){
-            return url('public/storage').'/'.$this->attributes['image'];
-    }
+
 }

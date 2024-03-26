@@ -29,23 +29,56 @@
 
                             <?php echo e(method_field('PUT')); ?>
 
-                            <div class="form-group mb-3">
+                            <div class=" mb-3">
+                                <div style="text-align: right;">
+                                    <buttom id='btn' onclick="edit()" style="color: #3a9aa8;" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="edit"></i></buttom>
+                                    <button id='link' type="submit" style="color: #3a9aa8; display: none; border:none;"><i data-feather="save"></i></button>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
-
-                                        <h4>Title</h4>
+                                        <p style="font-size: 24px;">Title</p>
                                     </div>
-                                    <div class="col-md-6" style="text-align: right;">
-                                        <buttom id='btn' onclick="edit()" style="color: #3a9aa8;" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="edit"></i></buttom>
-                                        <button id='link' type="submit" style="color: #3a9aa8; display: none; border:none;"><i data-feather="save"></i></button>
+                                    <div class="col-md-6">
+                                        <p style="font-size: 24px;">العنوان </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input id='title' name="title" class="form-control" type="text" readonly value="<?php echo e($row->title); ?>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id='title_ar' name="title_ar" class="form-control" type="text" readonly value="<?php echo e($row->title_ar); ?>" style="text-align: right;">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <h4>pragraph</h4>
+                                        <textarea name="pragraph" id='pragraph' class="form-control" rows="10" style="text-align: left;" readonly>
+                                        <?php echo e($row->pragraph); ?>
+
+                                        </textarea>
+
                                     </div>
                                 </div>
-                                <input id='title' name="title" class="form-control" type="text" readonly value="<?php echo e($row->title); ?>">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <h4>فقرة</h4>
+                                        <textarea name="pragraph_ar" id='pragraph_ar' class="form-control" rows="10" style="text-align: right;" readonly>
+                                        <?php echo e($row->pragraph_ar); ?>
+
+                                        </textarea>
+
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="form-group mb-3">
-                                <h4>pragraph</h4>
-                                <input name="pragraph" id='pragraph' class="form-control" type="text" readonly value="<?php echo e($row->pragraph); ?>" id="">
-                            </div>
+
 
                             <div class="form-group mb-3">
                                 <h4>image</h4>
@@ -83,7 +116,9 @@
     function edit() {
         var link = document.getElementById("link");
         var title = document.getElementById("title");
+        var title_ar = document.getElementById("title_ar");
         var pragraph = document.getElementById("pragraph");
+        var pragraph_ar = document.getElementById("pragraph_ar");
         var image = document.getElementById("image");
         var btn = document.getElementById("btn");
 
@@ -91,7 +126,9 @@
         image.style.display = null;
         btn.style.display = "none";
         title.removeAttribute('readonly');
+        title_ar.removeAttribute('readonly');
         pragraph.removeAttribute('readonly');
+        pragraph_ar.removeAttribute('readonly');
     }
 </script>
 

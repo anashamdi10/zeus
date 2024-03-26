@@ -3,7 +3,9 @@
 @section('title')
 {{ __('main.home') }}
 @endsection
-
+<!-- ======= Header ======= -->
+@include('site.partials.header')
+<!-- End Header -->
 @section('content')
 
 <section id="hero" class="d-flex align-items-center">
@@ -67,29 +69,31 @@
     <section id="counts" class="counts">
         <div class="container">
             <div class="row counters">
+                @foreach($counter as $row)
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="100">
                     <i class="bx bxs-building bx-lg"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$row->facilities}}" data-purecounter-duration="1" class="purecounter"></span>
                     <p>facilities</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="200">
                     <i class="bx bxs-leaf bx-lg"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="23" data-purecounter-duration="2" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$row->Porducts}}" data-purecounter-duration="2" class="purecounter"></span>
                     <p>Porducts</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="300">
                     <i class="bx bxs-package bx-lg"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="642" data-purecounter-duration="3" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$row->Produced_Tons_in_2023}}" data-purecounter-duration="3" class="purecounter"></span>
                     <p>Produced Tons in 2023</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="400">
                     <i class="bx bxs-user bx-lg"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="4" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$row->Oustees_Clients}}" data-purecounter-duration="4" class="purecounter"></span>
                     <p>Oustees Clients</p>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -37,9 +37,7 @@
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
-  @include('site.partials.header')
-  <!-- End Header -->
+ 
 
   <!-- ======= Hero Section ======= -->
   @yield('content')

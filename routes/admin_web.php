@@ -174,9 +174,11 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         
         
         Route::get('about', [AboutController::class, 'index'])->name('admin.about');
-        Route::get('counter', [CounterController::class, 'index'])->name('admin.counter');
 
+        Route::get('counter', [CounterController::class, 'index'])->name('admin.counter');
         Route::put('counter/{id}/update', [CounterController::class, 'update'])->name('counter.update');
+        
+
         
         
         // Route::get('about/create', [AboutController::class, 'create'])->name('about.create');

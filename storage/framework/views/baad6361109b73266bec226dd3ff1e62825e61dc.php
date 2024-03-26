@@ -30,13 +30,25 @@
                             <form action=<?php echo e(route('slides.store')); ?> method="post" enctype="multipart/form-data">
                                 <?php echo e(csrf_field()); ?>
 
-                                <div class="form-group mb-3">
-                                    <label class="col-form-label pt-0" for="title">Title </label>
-                                    <input class="form-control" id="title" type="text" name="title">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="col-form-label pt-0" for="title">Title </label>
+                                        <input class="form-control" id="title" type="text" name="title">
+                                    </div>
+                                    <div class="col-md-6 mb-3 " style="text-align: right;">
+                                        <label class="col-form-label pt-0" for="title_ar">العنوان </label>
+                                        <input class="form-control" id="title_ar" type="text" name="title_ar">
+                                    </div>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label class="col-form-label pt-0" for="sub_title">Sub Title </label>
-                                    <input class="form-control" id="sub_title" type="text" name="sub_title">
+                                <div class="row">
+                                    <div class=" col-md-6 mb-3">
+                                        <label class="col-form-label pt-0" for="sub_title">Sub Title </label>
+                                        <input class="form-control" id="sub_title" type="text" name="sub_title">
+                                    </div>
+                                    <div class="col-md-6 mb-3 " style="text-align: right;">
+                                        <label class="col-form-label pt-0" for="title_ar">العنوان الفرعي </label>
+                                        <input class="form-control" id="sub_title_ar" type="text" name="sub_title_ar">
+                                    </div>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="col-form-label pt-0" for="sub_title">Link </label>

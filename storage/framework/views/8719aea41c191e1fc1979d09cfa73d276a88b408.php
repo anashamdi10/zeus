@@ -3,7 +3,7 @@
 		<div class="header-container d-flex align-items-center justify-content-between">
 			<div class="logo">
 				<a href="index.html" aria-label="some more descriptive text that explains the link">
-					<img src="{{asset('zeus/assets/img/logo.png')}}" alt="Zeus" class="img-fluid" aria-label="some more descriptive text that explains the
+					<img src="<?php echo e(asset('zeus/assets/img/logo.png')); ?>" alt="Zeus" class="img-fluid" aria-label="some more descriptive text that explains the
 						link" /></a>
 			</div>
 
@@ -16,7 +16,7 @@
 					<li><a class="nav-link scrollto" href="shop.html">Products</a></li>
 					<li><a class="getstarted scrollto" href="#contact">Reach Us now</a></li>
 
-					<li><a class="getstarted scrollto" href="{{route('indexAr.show')}}">AR</a></li>
+					<li><a class="getstarted scrollto" href="<?php echo e(route('index.show')); ?>">En</a></li>
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav>
@@ -24,4 +24,4 @@
 		</div>
 		<!-- End Header Container -->
 	</div>
-</header>
+</header><?php /**PATH C:\xampp\htdocs\zeus-website\resources\views/site/partials/header_ar.blade.php ENDPATH**/ ?>

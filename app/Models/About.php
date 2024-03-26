@@ -17,6 +17,6 @@ class About extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'image', 'title', 'pragraph'
+        'id', 'image', 'title', 'pragraph', 'title_ar', 'pragraph_ar'
     ];
 }

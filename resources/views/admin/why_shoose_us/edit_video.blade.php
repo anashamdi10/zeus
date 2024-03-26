@@ -1,19 +1,18 @@
 @extends('layouts.default-layout.master')
 
-@section('title'){{ __('main.Create_Slide') }}
+@section('title'){{ __('main.Edit_Slide') }}
 {{ $title }}
 @endsection
 
 @push('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
 @endpush
-
 @section('content')
 @component('components.breadcrumb')
 @slot('breadcrumb_title')
-<h3>{{ __('main.Create_Slide') }} </h3>
+<h3>{{ __('main.Edit_Slide') }} </h3>
 @endslot
-<li class="breadcrumb-item"> {{ __('main.Create_Slide') }} </li>
+<li class="breadcrumb-item"> {{ __('main.Edit_Slide') }} </li>
 @slot('breadcrumb_icon')
 @endslot
 @endcomponent
@@ -25,32 +24,20 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action={{route('slides.store')}} method="post" enctype="multipart/form-data">
+                            <form action={{route('slides.video.update',$info->id)}} method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label class="col-form-label pt-0" for="title">Title </label>
-                                        <input class="form-control" id="title" type="text" name="title">
-                                    </div>
-                                    <div class="col-md-6 mb-3 " style="text-align: right;">
-                                        <label class="col-form-label pt-0" for="title_ar">العنوان </label>
-                                        <input class="form-control" id="title_ar" type="text" name="title_ar">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class=" col-md-6 mb-3">
-                                        <label class="col-form-label pt-0" for="sub_title">Sub Title </label>
-                                        <input class="form-control" id="sub_title" type="text" name="sub_title">
-                                    </div>
-                                    <div class="col-md-6 mb-3 " style="text-align: right;">
-                                        <label class="col-form-label pt-0" for="title_ar">العنوان الفرعي </label>
-                                        <input class="form-control" id="sub_title_ar" type="text" name="sub_title_ar">
-                                    </div>
-                                </div>
+                                {{method_field('PUT')}}
                                 <div class="form-group mb-3">
-                                    <label class="col-form-label pt-0" for="sub_title">Link </label>
-                                    <input class="form-control" id="link" type="text" name="link">
+                                    <label class="col-form-label pt-0" for="title">Slider Video </label>
+                                    <input class="form-control" id="video" name="video" type="file">
                                 </div>
+
+
+                                <video autoplay muted loop id="myVideo" style="height: 200px; width: 200px;">
+                                    <source src="{{ asset('uploads/video')}}/{{$info['video']}}" type="video/mp4" />
+                                </video>
+
+
                                 @if (count($errors) > 0)
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -78,9 +65,11 @@
     </div>
 </div>
 
+
 @push('scripts')
 <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
 @endpush
+
 
 @endsection

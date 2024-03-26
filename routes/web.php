@@ -48,10 +48,11 @@ Route::view('compact-layout', 'multiple.compact-layout')->name('compact-layout')
 Route::view('modern-layout', 'multiple.modern-layout')->name('modern-layout');
 
 
- Route::get('/', [HomeController::class, 'index'])->name('index.show');
- Route::get('/contact_page', [HomeController::class, 'contact'])->name('contact_page');
+Route::get('/', [HomeController::class, 'index'])->name('index.show');
+Route::get('/Ar', [HomeController::class, 'indexAr'])->name('indexAr.show');
+Route::get('/contact_page', [HomeController::class, 'contact'])->name('contact_page');
 
-  
+
 
 
 Route::get('/ajax/latest', [HomeController::class, 'latestIndex'])->name('latest.products');

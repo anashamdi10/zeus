@@ -76,6 +76,9 @@
                             <li>
                                 <a class="@if(Route::current()->getName() == 'admin.counter') active @endif" href="{{route('admin.counter')}}"><span>counter</span></a>
                             </li>
+                            <li>
+                                <a class="@if(Route::current()->getName() == 'admin.why_shose_us') active @endif" href="{{route('admin.why_shose_us')}}"><span>why_shose_us</span></a>
+                            </li>
 
                             <li>
                                 <a class="@if(Route::current()->getName() == 'admin.slides') active @endif" href="{{route('admin.slides')}}"><span>{{ __('main.Slides') }}</span></a>
