@@ -4,7 +4,7 @@ namespace App\Http\Requests\dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OptionRequest extends FormRequest
+class ServicesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,10 +32,11 @@ class OptionRequest extends FormRequest
             case 'POST':
                 {
                     return array(
-                        'name_ar'=>'required',
-                        'name_en'=>'required',
-                        'sort_order'=>'required',
-                        'type'=>'required',
+                        'title_en'=>'required',
+                        'title_ar'=>'required',
+                        'pragraph_en'=>'required',
+                        'pragraph_ar'=>'required',
+                        'image' => 'required |mimes:jpeg,bmp,png,gif,jpg,webp|max:5000',
                         
                     );
                 }
@@ -43,10 +44,10 @@ class OptionRequest extends FormRequest
                 {
 
                     return array(
-                       'name_ar'=>'required',
-                        'name_en'=>'required',
-                        'sort_order'=>'required',
-                        'type'=>'required',
+                        'title_en' => 'required',
+                        'title_ar' => 'required',
+                        'pragraph_en' => 'required',
+                        'pragraph_ar' => 'required',
                     );
                 }
             case 'PATCH':

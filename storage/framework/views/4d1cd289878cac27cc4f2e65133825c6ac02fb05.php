@@ -52,6 +52,9 @@
                             <li>
                                 <a class="<?php if(Route::current()->getName() == 'categories'): ?> active <?php endif; ?>" href="<?php echo e(route('categories')); ?>"><span><?php echo e(__('main.Categories')); ?> </span></a>
                             </li>
+                            <li>
+                                <a class="<?php if(Route::current()->getName() == 'category_terms'): ?> active <?php endif; ?>" href="<?php echo e(route('category_terms')); ?>"><span> Category_terms </span></a>
+                            </li>
 
                         </ul>
                     </li>
@@ -69,6 +72,10 @@
                     <li class="dropdown">
                         <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="info"></i><span><?php echo e(__('main.Site_Data')); ?> </span></a>
                         <ul class="nav-submenu menu-content">
+
+                            <li>
+                                <a class="<?php if(Route::current()->getName() == 'admin.slides'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.slides')); ?>"><span><?php echo e(__('main.Slides')); ?></span></a>
+                            </li>
                             <li>
                                 <a class="<?php if(Route::current()->getName() == 'admin.about'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.about')); ?>"><span>About</span></a>
                             </li>
@@ -76,9 +83,16 @@
                             <li>
                                 <a class="<?php if(Route::current()->getName() == 'admin.counter'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.counter')); ?>"><span>counter</span></a>
                             </li>
+                            <li>
+                                <a class="<?php if(Route::current()->getName() == 'admin.why'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.why')); ?>"><span>why shose us</span></a>
+                            </li>
 
                             <li>
-                                <a class="<?php if(Route::current()->getName() == 'admin.slides'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.slides')); ?>"><span><?php echo e(__('main.Slides')); ?></span></a>
+                                <a class="<?php if(Route::current()->getName() == 'admin.services'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.services')); ?>"><span>our services</span></a>
+                            </li>
+
+                            <li>
+                                <a class="<?php if(Route::current()->getName() == 'admin.admin.our_news'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.our_news')); ?>"><span>Our News</span></a>
                             </li>
 
 

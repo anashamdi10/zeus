@@ -1,7 +1,7 @@
 @extends('layouts.default-layout.master')
 
 @section('title'){{ __('main.Edit_Slide') }}
-why shoose us 
+Our services
 @endsection
 
 @push('css')
@@ -10,9 +10,9 @@ why shoose us
 @section('content')
 @component('components.breadcrumb')
 @slot('breadcrumb_title')
-<h3>why shoose us Edit / {{$info->title}} </h3>
+<h3>Our services Edit / {{$info->title_en}} </h3>
 @endslot
-<li class="breadcrumb-item"> why shoose us  </li>
+<li class="breadcrumb-item">Our services </li>
 @slot('breadcrumb_icon')
 @endslot
 @endcomponent
@@ -24,14 +24,14 @@ why shoose us
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action={{route('why.update',$info->id)}} method="post" enctype="multipart/form-data">
+                            <form action={{route('services.update',$info->id)}} method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('PUT')}}
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label class="col-form-label pt-0" for="title">Title en </label>
-                                            <input class="form-control" value="{{$info->title}}" id="title" type="text" name="title">
+                                            <input class="form-control" value="{{$info->title_en}}" id="title_en" type="text" name="title_en">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -58,12 +58,12 @@ why shoose us
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <img src="{{ asset('uploads/why_us/' . $info->image) }}" width="80px" height="80px" style="margin-bottom: 10px; " /> <br>
-                                    <input id='image' name="image" type="file" class="form-control" >
+                                    <img src="{{ asset('uploads/services/' . $info->image) }}" width="80px" height="80px" style="margin-bottom: 10px; " /> <br>
+                                    <input id='image' name="image" type="file" class="form-control">
                                 </div>
-                                
-                               
-                                
+
+
+
 
                                 @if (count($errors) > 0)
                                 <ul>

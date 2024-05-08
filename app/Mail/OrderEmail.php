@@ -32,6 +32,6 @@ class OrderEmail extends Mailable
     {
 
         return $this->view('site.pages.email.emailProduct' , ['mailData' => $this->data])
-        ->subject("woody-factory Orders");
+        ->subject("Zeus Orders");
     }
 }

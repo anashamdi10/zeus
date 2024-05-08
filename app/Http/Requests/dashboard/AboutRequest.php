@@ -31,7 +31,9 @@ class AboutRequest extends FormRequest
             case 'POST': {
                     return array(
                         'title' => 'required',
+                        'title_ar' => 'required',
                         'pragraph' => 'required',
+                        'pragraph_ar' => 'required',
                         'image' => 'required',
                         // 'roles'=>'required',
                         // 'password' => 'required|confirmed',
@@ -42,10 +44,10 @@ class AboutRequest extends FormRequest
             case 'PUT': {
 
                     return array(
-                        'name' => 'required',
-                        'email' => 'required',
-                        // 'roles'=>'required',
-                        'password' => 'required|confirmed',
+                        'title' => 'required',
+                        'title_ar' => 'required',
+                        'pragraph' => 'required',
+                        'pragraph_ar' => 'required',
                     );
                 }
             case 'PATCH':

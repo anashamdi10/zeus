@@ -141,7 +141,7 @@ class PageController extends Controller
     {
         
         $data = $request->all();
-        Mail::to('info@woody-factory.com')->send(new OrderEmail());
+        Mail::to('anashamdi76@gmail.com')->send(new OrderEmail($data));
         $flag = Order::create($data);
         if($flag){
 

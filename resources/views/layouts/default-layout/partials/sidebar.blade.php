@@ -52,6 +52,9 @@
                             <li>
                                 <a class="@if(Route::current()->getName() == 'categories') active @endif" href="{{route('categories')}}"><span>{{ __('main.Categories') }} </span></a>
                             </li>
+                            <li>
+                                <a class="@if(Route::current()->getName() == 'category_terms') active @endif" href="{{route('category_terms')}}"><span> Category_terms </span></a>
+                            </li>
 
                         </ul>
                     </li>
@@ -81,13 +84,16 @@
                                 <a class="@if(Route::current()->getName() == 'admin.counter') active @endif" href="{{route('admin.counter')}}"><span>counter</span></a>
                             </li>
                             <li>
-                                <a class="@if(Route::current()->getName() == 'admin.why') active @endif" href="{{route('admin.why')}}"><span>why_shose_us</span></a>
+                                <a class="@if(Route::current()->getName() == 'admin.why') active @endif" href="{{route('admin.why')}}"><span>why shose us</span></a>
                             </li>
+
                             <li>
                                 <a class="@if(Route::current()->getName() == 'admin.services') active @endif" href="{{route('admin.services')}}"><span>our services</span></a>
                             </li>
 
-                           
+                            <li>
+                                <a class="@if(Route::current()->getName() == 'admin.admin.our_news') active @endif" href="{{route('admin.our_news')}}"><span>Our News</span></a>
+                            </li>
 
 
 

@@ -36,10 +36,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p style="font-size: 24px;">Title</p>
+                                        <p style="font-size: 24px;">Title En</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p style="font-size: 24px;">العنوان </p>
+                                        <p style="font-size: 24px; ">Title Ar </p>
                                     </div>
 
                                 </div>
@@ -58,7 +58,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <h4>pragraph</h4>
+                                        <h4>Pragrap Enh</h4>
                                         <textarea name="pragraph" id='pragraph' class="form-control" rows="10" style="text-align: left;" readonly>
                                         <?php echo e($row->pragraph); ?>
 
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <h4>فقرة</h4>
+                                        <h4 >Pragraph Ar</h4>
                                         <textarea name="pragraph_ar" id='pragraph_ar' class="form-control" rows="10" style="text-align: right;" readonly>
                                         <?php echo e($row->pragraph_ar); ?>
 

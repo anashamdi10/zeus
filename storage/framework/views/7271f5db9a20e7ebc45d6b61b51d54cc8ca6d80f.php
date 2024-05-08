@@ -37,7 +37,7 @@
 </head>
 
 <body>
- 
+
 
   <!-- ======= Hero Section ======= -->
   <?php echo $__env->yieldContent('content'); ?>
@@ -60,7 +60,7 @@
 
 
   <!-- Template Main JS File -->
- 
+  <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 
 </html><?php /**PATH C:\xampp\htdocs\zeus-website\resources\views/site/app.blade.php ENDPATH**/ ?>

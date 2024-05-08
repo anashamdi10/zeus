@@ -25,28 +25,27 @@ why shoose us
                                     <th>#</th>
                                     <th>Title</th>
                                     <th style="width: 300px;">pragraph</th>
-                                    
+
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @if(@isset($data) && !@empty($data))
-                                    @foreach( $data as $info)
+                                @foreach( $data as $info)
 
-                                        <tr>
-                                            <td>{{$info->id}}</td>
-                                            <td>{{$info->title}}</td>
-                                            <td>{{$info->pragraph_en}}</td>
-                                            
+                                <tr>
+                                    <td>{{$info->id}}</td>
+                                    <td>{{$info->title}}</td>
+                                    <td>{{$info->pragraph_en}}</td>
 
 
-                                            <td>
-                                                <a href="{{ route('why.edit', $info->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="{{ route('slides.delete',$info->id) }}" class="btn btn-danger btn-sm">Delete</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+
+                                    <td>
+                                        <a href="{{ route('why.edit', $info->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                    </td>
+                                </tr>
+                                @endforeach
                                 @else
                                 <tr>
                                     <td colspan="5" class="alert alert-danger">No Data</td>
@@ -56,14 +55,16 @@ why shoose us
                             </tbody>
                         </table>
                     </div>
+
+                   
                 </div>
             </div>
         </div>
     </div>
-  
 
 
-    </div>
+
+</div>
 </div>
 
 

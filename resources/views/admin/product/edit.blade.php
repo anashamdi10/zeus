@@ -17,7 +17,8 @@
 @endslot
 @endcomponent
 
-
+<input type="hidden" id="token_search" value="{{csrf_token() }}">
+<input type="hidden" id="ajax_subcategory" value="{{ route('admin.sub_category') }}">
 
 <div class="container-fluid">
     <form action={{route('products.update',$info->id)}} method="post" enctype="multipart/form-data">
@@ -37,6 +38,24 @@
                             <label class="col-form-label pt-0" for="name_en"> {{ __('main.Desc_En') }}</label>
                             <textarea class="ckeditor form-control" rows="3" name="description_en">
                             {{$info->description_en}}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label class="col-form-label pt-0" for="name_en">Product Name Ar</label>
+                            <input class="form-control" id="name_ar" name="name_ar" value="{{$info->name_ar}}">
+                        </div>
+
+                        <div class="form-group mb-3 ibox-content no-padding">
+                            <label class="col-form-label pt-0" for="name_ar"> Description Product Ar </label>
+                            <textarea class="ckeditor form-control" rows="4" name="description_ar">
+                            {{$info->description_ar}}
                             </textarea>
                         </div>
                     </div>
@@ -97,18 +116,36 @@
                             @endforeach
                         </select>
                     </div> -->
-
+                    <div class="form-group mb-3 col-3">
+                        <label class="col-form-label pt-0" for="sub_title"> Sub Title </label>
+                        <input class="form-control" id="sub_title" name="sub_title" value="{{$info->sub_title}}">
+                    </div>
+                    <div class="form-group mb-3 col-3">
+                        <label class="col-form-label pt-0" for="sub_title"> Sub Title Ar </label>
+                        <input class="form-control" id="sub_title_ar" name="sub_title_ar" value="{{$info->sub_title_ar}}">
+                    </div>
                     <div class="form-group mb-3 col-3">
                         <label class="col-form-label pt-0" for="name_en"> Product Code </label>
                         <input class="form-control" id="product_code" name="product_code" value="{{$info->product_code}}">
                     </div>
+
+
 
                     <div class="form-group mb-3 col-3">
                         <label class="col-form-label pt-0" for="name_en"> {{ __('main.Category') }}</label>
                         <select name="category_id" id="category_id" class="form-control ">
 
                             @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{$info->category_id == $category->id ? 'selected': ''}}>{{ $category->name_ar }}</option>
+                            <option value="{{ $category->id }}" {{$info->category_id == $category->id ? 'selected': ''}}>{{ $category->name_en }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mb-3 col-3" id='category_term'>
+                        <label class="col-form-label pt-0" for="name_en"> Sub Category</label>
+                        <select name="category_term" id="category_term" class="form-control ">
+                            <option disabled> اختر القسم</option>
+                            @foreach($categoryterms as $categoryterm)
+                            <option {{$info->category_term == $categoryterm->id ? 'selected': ''}} value="{{ $categoryterm->id }}">{{ $categoryterm->content_en }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -121,21 +158,27 @@
                         </select>
                     </div>
 
-                    <!-- <div class="form-group mb-3 col-3">
-                        <label class="col-form-label pt-0" for="name_en"> {{ __('main.Available') }}</label>
-                        <select name="available" id="categories" class="form-control">
-                            <option value="1" {{( $info->available==1)?"selected":""}}> {{ __('main.Yes') }} </option>
-                            <option value="0" {{( $info->available==0)?"selected":""}}> {{ __('main.No') }} </option>
-                        </select>
-                    </div> -->
+                    <div class="form-group mb-3 col-3">
+                        <label class="col-form-label pt-0" for="harvest_sessions"> harvest Sessions </label>
+                        <input class="form-control" id="harvest_sessions" name="harvest_sessions" type="text" value="{{$info->harvest_sessions}}">
+                    </div>
+                    <div class="form-group mb-3 col-3">
+                        <label class="col-form-label pt-0" for="harvest_sessions"> harvest Sessions ar </label>
+                        <input class="form-control" id="harvest_essions_ar" name="harvest_essions_ar" type="text" value="{{$info->harvest_essions_ar}}">
+                    </div>
                 </div>
 
                 <h5 class="mb-4">Product Image</h5>
                 <div class="row mb-4">
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 col-md-6">
                         <label class="col-form-label pt-0" for="main_image"> Main Image </label>
                         <div><img src="{{ asset('uploads/products/' . $main_image) }}" width="75px" height="75px" /></div>
                         <input class="form-control" id="main_full" name="main_full" type="file">
+                    </div>
+                    <div class="form-group mb-3 col-md-6">
+                        <label class="col-form-label pt-0" for="sub_main"> Sub Image </label>
+                        <div><img src="{{ asset('uploads/products/' . $sub_image) }}" width="75px" height="75px" /></div>
+                        <input class="form-control" id="sub_main" name="sub_main" type="file">
                     </div>
                     <div class="form-group mb-3">
                         <label class="col-form-label pt-0" for="main_image"> Product Images </label>
@@ -149,7 +192,7 @@
                             @endforeach
                         </div>
 
-                        <input class="form-control" id="images" name="images[]" multiple accept="image/*" type="file" style="">
+                        <input class="form-control" id="images" name="images[]" multiple accept="image/*" type="file">
                     </div>
                 </div>
             </div>
@@ -206,142 +249,34 @@
 @push('scripts')
 <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
 <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+
 <script>
-    function addOption(cats) {
-        var catsOtps = cats.map(
-                (categ) => `
-                        <option value="${categ.id}">${categ.name_ar}</option>
-                        `
-            )
-            .join("");
+    $(document).ready(function() {
+        $(document).on('change', '#category_id', function(e) {
+            var token = $("#token_search").val();
+            var url = $("#ajax_subcategory").val();
+            var category_id = $("#category_id").val();
 
-        html = ` 
-                    <div class="card" id="optsCard">
-                        <div class="card-header bg-primary text-white">
-                            
-                                <div class="form-group mb-0">
-                                    <label class="col-form-label pt-0" for="name_ar">اختر الخيار</label> 
-                                    <div class="col-lg-6 d-flex align-items-end gap-4">    
-                                        <select type="text" class="form-control w-50" id="option-field">
-                                            ${catsOtps}
-                                        </select>
-                                        <button type="button" onClick="addnew(this)" class="remove-tr btn btn-danger">اضافه قيمه الخيار</button>
-                                    </div>
-                                </div>
-                            
-                        </div>
-                        <div class="card-body" id="option_values">
+            jQuery.ajax({
+                url: url,
+                type: "post",
+                dataType: "html",
+                cache: false,
+                data: {
+                    '_token': token,
+                    category_id: category_id,
 
-                        </div>
-                    </div>
-                `;
-        $("#form").append(html);
-    }
-
-
-    function addnew(btn) {
-        let id = $(btn).siblings('#option-field').find(':selected').val();
-        let name = $(btn).siblings('#option-field').find(':selected').text()
-        let values = $(btn).closest("#optsCard").find('#option_values');
-        console.log(name)
-        $.ajax({
-            url: `{{ url('/cpadmin/ajax/get-options/') }}/${id}`,
-            method: "GET",
-            success: function(data) {
-                let selectOpts = data.map((opt) => `
-                        <option value="${opt.id}">${opt.name_ar}</option>
-                    `);
-                html = `
-                        <div class="" id="option_values">
-                            <div class="row mb-4" style="border-bottom: 1px solid #e6edef">
-                                <div class="col-lg-1 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">${name}</label> 
-                                        <select type="text" class="form-control" name="option_value_ids[]">
-                                            ${selectOpts}
-                                        </select>
-                                    </div>
-                                </div>
-        
-                                <div class="col-lg-1 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">الكميه</label> 
-                                        <input type="text" class="form-control" name="quantities[]">
-                                    </div>
-                                </div>
-                                
-                                <input hidden value="${id}" name="option_ids[]">
-                            
-                                <div class="col-lg-1 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">  subtract </label> 
-                                        <select type="text" class="form-control" name="subtract[]">
-                                            <option value="1">true</option>
-                                            <option value="0">false</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-2 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">  السعر </label> 
-                                        <input type="text" class="form-control" name="prices[]">
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-1 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">price prefix</label> 
-                                        <select type="text" class="form-control" name="price_prefixes[]">
-                                            <option value="+">plus</option>
-                                            <option value="-">minus</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-2 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">  النقاط </label> 
-                                        <input type="text" class="form-control" name="points[]">
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-1 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">  points prefix </label> 
-                                        <select type="text" class="form-control" name="points_prefixes[]">
-                                            <option value="+">plus</option>
-                                            <option value="-">minus</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                        
-                                <div class="col-lg-2 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">  الوزن </label> 
-                                        <input type="text" class="form-control" name="weights[]">
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-1 mb-4">
-                                    <div class="form-group mb-0">
-                                        <label class="col-form-label pt-0" for="name_ar">weight prefix</label> 
-                                        <select type="text" class="form-control" name="weight_prefixes[]">
-                                            <option value="+">plus</option>
-                                            <option value="-">minus</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
-                $(values).append(html);
-            }
-
-        });
-
-    }
+                },
+                success: function(data) {
+                    $("#category_term").html(data);
+                },
+                error: function() {
+                    alert("error in add_item");
+                },
+            });
+        })
+    })
 </script>
-
 
 @endpush
 

@@ -39,7 +39,7 @@ class AboutController extends Controller
         }
     }
 
-    public function update(Request $request,$id)
+    public function update(AboutRequest $request,$id)
     {
         
         $data = $request->all();

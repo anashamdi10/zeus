@@ -75,25 +75,25 @@
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="100">
                     <i class="bx bxs-building bx-lg"></i>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->facilities); ?>" data-purecounter-duration="1" class="purecounter"></span>
-                    <p>facilities</p>
+                    <p>مرافق</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="200">
                     <i class="bx bxs-leaf bx-lg"></i>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Porducts); ?>" data-purecounter-duration="2" class="purecounter"></span>
-                    <p>Porducts</p>
+                    <p>منتجات</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="300">
                     <i class="bx bxs-package bx-lg"></i>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Produced_Tons_in_2023); ?>" data-purecounter-duration="3" class="purecounter"></span>
-                    <p>Produced Tons in 2023</p>
+                    <p>إنتاج طن في عام 2023</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="400">
                     <i class="bx bxs-user bx-lg"></i>
                     <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Oustees_Clients); ?>" data-purecounter-duration="4" class="purecounter"></span>
-                    <p>Oustees Clients</p>
+                    <p>عملاء الغرباء</p>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
@@ -107,40 +107,27 @@
             <div class="row">
                 <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-right">
                     <div class="content">
-                        <h3>Why Choose Zeus for your next shipments</h3>
+                        <h3>لماذا تختار زيوس لشحناتك القادمة</h3>
 
                         <div class="text-center">
-                            <a href="404.html" class="more-btn">Contact Us Now <i class="bx bx-chevron-right"></i></a>
+                            <a href="404.html" class="more-btn">اتصل بنا الآن <i class="bx bx-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8 d-flex align-items-stretch">
                     <div class="icon-boxes d-flex flex-column justify-content-center">
                         <div class="row">
+                            <?php $__currentLoopData = $why_us; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+
                                 <div class="icon-box mt-4 mt-xl-0">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/1.webp')); ?>" alt="Zeus Orginc Crops" />
-                                    <h3>
-                                        Orginc<br />
-                                        Crops
-                                    </h3>
-                                    <p>We uses Organic crops from the starts of the Agriulture process as they are the main core of our industry</p>
+                                    <img src="<?php echo e(asset('uploads/why_us/' . $row->image)); ?>" alt="Zeus Orginc Crops" />
+                                    <h3><?php echo e($row->title_ar); ?></h3>
+                                    <p><?php echo e($row->pragraph_ar); ?></p>
                                 </div>
                             </div>
-                            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-                                <div class="icon-box mt-4 mt-xl-0">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/2.webp')); ?>" alt="Zeus Qulity " />
-                                    <h3>Qulity is what defines Us</h3>
-                                    <p>the Qualkity of the products is what we make our crops Qunic & delicious</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-                                <div class="icon-box mt-4 mt-xl-0">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/3.webp')); ?>" alt="Zues specialization" />
-                                    <h3>The specialization</h3>
-                                    <p>Zeus is consists of kind of specilized teams every team is specilized in one thing to maintain our qulity</p>
-                                </div>
-                            </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                         </div>
                     </div>
                     <!-- End .content-->
@@ -156,96 +143,28 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="section-title" data-aos="fade-right">
-                        <h2>Our Services</h2>
+                        <h2>خدماتنا</h2>
                         <p>
-                            We transcend mere services, weaving a symphony of solutions for your farm. From nurturing soil to harvesting the bounty, our expertise plays
-                            a harmonious tune, cultivating prosperity and unlocking your agricultural aspirations. Join us and let's bring your farm to its crescendo!
+                            نحن نتجاوز مجرد الخدمات، وننسج سيمفونية من الحلول لمزرعتك. من رعاية التربة إلى حصاد المكافأة، تلعب خبرتنا دورًا
+                            لحن متناغم، يزرع الرخاء ويطلق العنان لتطلعاتك الزراعية. انضم إلينا ودعنا نصل بمزرعتك إلى ذروتها!
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
+                        <?php $__currentLoopData = $our_services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                         <div class="col-md-4 d-flex align-items-stretch mt-4">
                             <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                                 <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/4.webp')); ?>" alt="Zeus Service Land Reclamation" />
+                                    <img src="<?php echo e(asset('uploads/services/' . $row->image)); ?>" alt="Zeus Service Land Reclamation" />
                                 </div>
-                                <h4>Land Reclamation</h4>
-                                <p>Implementing state-of-the-art technology for efficient land reclamation.</p>
+                                <h4><?php echo e($row->title_ar); ?></h4>
+                                <p><?php echo e($row->pragraph_ar); ?></p>
                             </div>
                         </div>
-                        <div class="col-md-4 d-flex align-items-stretch mt-4">
-                            <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/5.webp')); ?>" alt="Zeus Service  Fertilizer Application" />
-                                </div>
-                                <h4>Fertilizer Application</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex align-items-stretch mt-4">
-                            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/6.webp')); ?>" alt="Zeus Service Harvesting " />
-                                </div>
-                                <h4>Harvesting</h4>
-                                <p>Meticulously harvesting fruits in accordance with the highest European quality standards.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex align-items-stretch mt-4">
-                            <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/7.webp')); ?>" alt="Zeus Service Transport to Zeus Facilities " />
-                                </div>
-                                <h4>Transport to Zeus Facilities</h4>
-                                <p>Safely and efficiently transporting the harvested produce to Zeus facilities.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex align-items-stretch mt-4">
-                            <div class="icon-box" data-aos="zoom-in" data-aos-delay="500">
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/8.webp')); ?>" alt="Zeus Service Sorting " />
-                                </div>
-                                <h4>Sorting services</h4>
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex align-items-stretch mt-4">
-                            <div class="icon-box" data-aos="zoom-in" data-aos-delay="600">
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/9.webp')); ?>" alt="Zeus Service Packaging " />
-                                </div>
-                                <h4>Packaging services</h4>
-                                <p>Employing advanced packaging techniques to safeguard product integrity.ٍ</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex align-items-stretch mt-4">
-                            <div class="icon-box" data-aos="zoom-in" data-aos-delay="700">
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/10.webp')); ?>" alt="Zeus Service Storage " />
-                                </div>
-                                <h4>Storage Stage</h4>
-                                <p>Possessing state-of-the-art frozen and refrigerated storage facilities.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex align-items-stretch mt-4">
-                            <div class="icon-box" data-aos="zoom-in" data-aos-delay="800">
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/11.webp')); ?>" alt="Zeus Service  Logistics " />
-                                </div>
-                                <h4>Logistics Methods</h4>
-                                <p>Utilizing refrigerated trailers for overland transportation.Employing refrigerated and frozen containers for sea transportation</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex align-items-stretch mt-4">
-                            <div class="icon-box" data-aos="zoom-in" data-aos-delay="900">
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('zeus/assets/img/icons/12.webp')); ?>" alt="Zeus Service Door-to-Door " />
-                                </div>
-                                <h4>Door-to-Door Service</h4>
-                                <p>Providing convenient door-to-door transportation services.</p>
-                            </div>
-                        </div>
+
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
             </div>
@@ -266,10 +185,10 @@
 
                 <!-- Start Column 2 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
-                    <a class="product-item" href="404.html">
-                        <img src="<?php echo e(asset('zeus/assets/img/product1.webp')); ?>" onmouseover="this.src='<?php echo e(asset("zeus/assets/img/product2.webp")); ?>'" onmouseout="this.src='<?php echo e(asset("zeus/assets/img/product1.webp")); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
-                        <h3 class="product-title">Noval orange</h3>
-                        <strong class="product-price"> Framed in own Farms </strong>
+                    <a class="product-item" href="<?php echo e(route('info_product_ar', $products_Featured[0]['id'])); ?>">
+                        <img src="<?php echo e(asset('uploads/products/' . $products_Featured[0]['main_image'][0]['full'])); ?>" onmouseover="this.src='<?php echo e(asset("uploads/products/" .$products_Featured[0]['sub_image'][0]['full'] )); ?>'" onmouseout="this.src='<?php echo e(asset("uploads/products/" .$products_Featured[0]['main_image'][0]['full'] )); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
+                        <h3 class="product-title"><?php echo e($products_Featured[0]['name_ar']); ?></h3>
+                        <strong class="product-price"> <?php echo e($products_Featured[0]['sub_title_ar']); ?> </strong>
 
                         <span class="icon-cross">
                             <i class="bx bxs-right-top-arrow-circle bx-md bx-tada-hover"></i>
@@ -280,10 +199,10 @@
 
                 <!-- Start Column 3 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
-                    <a class="product-item" href="404.html">
-                        <img src="<?php echo e(asset('zeus/assets/img/product1.webp')); ?>" onmouseover="this.src='<?php echo e(asset("zeus/assets/img/product2.webp")); ?>'" onmouseout="this.src='<?php echo e(asset("zeus/assets/img/product1.webp")); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
-                        <h3 class="product-title">Noval orange</h3>
-                        <strong class="product-price">Framed in own Farms</strong>
+                    <a class="product-item" href="<?php echo e(route('info_product_ar', $products_Featured[1]['id'])); ?>">
+                        <img src="<?php echo e(asset('uploads/products/' . $products_Featured[1]['main_image'][0]['full'])); ?>" onmouseover="this.src='<?php echo e(asset("uploads/products/" .$products_Featured[1]['sub_image'][0]['full'] )); ?>'" onmouseout="this.src='<?php echo e(asset("uploads/products/" .$products_Featured[1]['main_image'][0]['full'] )); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
+                        <h3 class="product-title"><?php echo e($products_Featured[1]['name_ar']); ?></h3>
+                        <strong class="product-price"><?php echo e($products_Featured[1]['sub_title_ar']); ?></strong>
 
                         <span class="icon-cross">
                             <i class="bx bxs-right-top-arrow-circle bx-md bx-tada-hover"></i>
@@ -294,10 +213,10 @@
 
                 <!-- Start Column 4 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
-                    <a class="product-item" href="404.html">
-                        <img src="<?php echo e(asset('zeus/assets/img/product1.webp')); ?>" onmouseover="this.src='<?php echo e(asset("zeus/assets/img/product2.webp")); ?>'" onmouseout="this.src='<?php echo e(asset("zeus/assets/img/product1.webp")); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
-                        <h3 class="product-title">Noval orange</h3>
-                        <strong class="product-price">Framed in own Farms</strong>
+                    <a class="product-item" href="<?php echo e(route('info_product_ar', $products_Featured[2]['id'])); ?>">
+                        <img src="<?php echo e(asset('uploads/products/' . $products_Featured[2]['main_image'][0]['full'])); ?>" onmouseover="this.src='<?php echo e(asset("uploads/products/" .$products_Featured[2]['sub_image'][0]['full'] )); ?>'" onmouseout="this.src='<?php echo e(asset("uploads/products/" .$products_Featured[2]['main_image'][0]['full'] )); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
+                        <h3 class="product-title"><?php echo e($products_Featured[2]['name_ar']); ?></h3>
+                        <strong class="product-price"><?php echo e($products_Featured[2]['sub_title_ar']); ?></strong>
 
                         <span class="icon-cross">
                             <i class="bx bxs-right-top-arrow-circle bx-md bx-tada-hover"></i>
@@ -330,150 +249,37 @@
     <section class="Blog-section py-lg-5">
         <div class="container">
             <div class="section-title" data-aos="fade-right">
-                <h2>Our News</h2>
+                <h2>أخبارنا </h2>
             </div>
             <div class="swiper blogger">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
+                    <?php $__currentLoopData = $our_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="swiper-slide">
                         <div class="example-2 card">
-                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
+                            <div class="wrapper" style="background: url(<?php echo e(asset('uploads/news/' . $row->image)); ?>) center/cover no-repeat">
                                 <div class="header">
                                     <div class="date">
-                                        <span class="day">12</span>
-                                        <span class="month">Aug</span>
-                                        <span class="year">2023</span>
+                                        <span class="day"><?php echo e($row->date); ?></span>
+
                                     </div>
                                 </div>
                                 <div class="data">
                                     <div class="content">
-                                        <span class="author">Eng Ahmed</span>
+                                        <span class="author"><?php echo e($row->writer_ar); ?></span>
                                         <h2 class="title">
-                                            <a href="#">The great benefits of Orange in winter</a>
+                                            <a href="#"><?php echo e($row->title_ar); ?></a>
                                         </h2>
-                                        <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-                                        <a href="#" class="button btn-get-started">Read more</a>
+                                        <p class="text"><?php echo e($row->pragraph_ar); ?></p>
+                                        <a href="#" class="button btn-get-started">اقرأ أكثر</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="example-2 card">
-                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
-                                <div class="header">
-                                    <div class="date">
-                                        <span class="day">12</span>
-                                        <span class="month">Aug</span>
-                                        <span class="year">2023</span>
-                                    </div>
-                                </div>
-                                <div class="data">
-                                    <div class="content">
-                                        <span class="author">Eng Ahmed</span>
-                                        <h2 class="title">
-                                            <a href="#">The great benefits of Orange in winter</a>
-                                        </h2>
-                                        <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-                                        <a href="#" class="button btn-get-started">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="example-2 card">
-                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
-                                <div class="header">
-                                    <div class="date">
-                                        <span class="day">12</span>
-                                        <span class="month">Aug</span>
-                                        <span class="year">2023</span>
-                                    </div>
-                                </div>
-                                <div class="data">
-                                    <div class="content">
-                                        <span class="author">Eng Ahmed</span>
-                                        <h2 class="title">
-                                            <a href="#">The great benefits of Orange in winter</a>
-                                        </h2>
-                                        <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-                                        <a href="#" class="button btn-get-started">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="example-2 card">
-                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
-                                <div class="header">
-                                    <div class="date">
-                                        <span class="day">12</span>
-                                        <span class="month">Aug</span>
-                                        <span class="year">2023</span>
-                                    </div>
-                                </div>
-                                <div class="data">
-                                    <div class="content">
-                                        <span class="author">Eng Ahmed</span>
-                                        <h2 class="title">
-                                            <a href="#">The great benefits of Orange in winter</a>
-                                        </h2>
-                                        <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-                                        <a href="#" class="button btn-get-started">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="example-2 card">
-                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
-                                <div class="header">
-                                    <div class="date">
-                                        <span class="day">12</span>
-                                        <span class="month">Aug</span>
-                                        <span class="year">2023</span>
-                                    </div>
-                                </div>
-                                <div class="data">
-                                    <div class="content">
-                                        <span class="author">Eng Ahmed</span>
-                                        <h2 class="title">
-                                            <a href="#">The great benefits of Orange in winter</a>
-                                        </h2>
-                                        <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-                                        <a href="#" class="button btn-get-started">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="example-2 card">
-                            <div class="wrapper" style="background: url(<?php echo e(asset('zeus/assets/img/blog1.webp')); ?>) center/cover no-repeat">
-                                <div class="header">
-                                    <div class="date">
-                                        <span class="day">12</span>
-                                        <span class="month">Aug</span>
-                                        <span class="year">2023</span>
-                                    </div>
-                                </div>
-                                <div class="data">
-                                    <div class="content">
-                                        <span class="author">Eng Ahmed</span>
-                                        <h2 class="title">
-                                            <a href="#">The great benefits of Orange in winter</a>
-                                        </h2>
-                                        <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-                                        <a href="#" class="button btn-get-started">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                 </div>
                 <div class="news-slider__pagination"></div>
             </div>

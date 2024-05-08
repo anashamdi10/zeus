@@ -25,7 +25,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'id','name_ar','name_en', 'slug', 'description_ar', 'description_en','parent_id', 'featured', 'menu', 'image','color','usage_ar','sort'
+        'id','name_ar','name_en', 'parent_id'
     ];
 
     /**
@@ -74,7 +74,7 @@ class Category extends Model
         return $this->hasMany(ProductCategory::class,'category_id');
     }
     
-     public function categoryTerms()
+    public function categoryTerms()
     {
         return $this->hasMany(CategoryTerm::class,'category_id');
     }

@@ -17,7 +17,7 @@ class CategoryTermController extends Controller
 {
     public function index(Request $request){
         if ($request->ajax()) {
-            $data = CategoryTerm::select('id','content_ar')->get();
+            $data = CategoryTerm::select('id', 'content_en')->get();
             return DataTables::of($data)->addIndexColumn()
                 ->addColumn('action', function($row){
                     $btn ='<div class="d-flex align-items-center flex-wrap gap-3"><a href="categoryterm/'.$row->id.'/edit" data-id="'.$row->id.'" class="btn btn-primary btn-sm">Edit</a>';
@@ -43,7 +43,7 @@ class CategoryTermController extends Controller
 
     public function create()
     {
-        $categories = Category::select('id','name_ar')->get();
+        $categories = Category::select('id', 'name_en')->get();
         return view('admin.categoryterm.create',compact('categories'));
     }
 
@@ -51,7 +51,7 @@ class CategoryTermController extends Controller
     {
         $data=$request->all();
 
-        $create = CategoryTerm::create($data);
+        CategoryTerm::create($data);
 
         Session::flash('success','تمت الاضافة بنجاح');
         return redirect()->back();
@@ -60,7 +60,9 @@ class CategoryTermController extends Controller
     public function edit($id)
     {
         $info = CategoryTerm::find($id);
-        $categories = Category::select('id','name_ar')->get();
+        $categories = Category::select('id', 'name_en')->get();
+        
+
         return view('admin.categoryterm.edit',compact('info','categories'));
     }
 

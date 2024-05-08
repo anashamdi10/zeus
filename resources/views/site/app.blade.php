@@ -37,7 +37,7 @@
 </head>
 
 <body>
- 
+
 
   <!-- ======= Hero Section ======= -->
   @yield('content')
@@ -60,7 +60,7 @@
 
 
   <!-- Template Main JS File -->
- 
+  @stack('scripts')
 </body>
 
 </html>

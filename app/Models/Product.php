@@ -18,8 +18,7 @@ class Product extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id', 'name_en',  'description_ar', 'description_en','featured' ,'product_code', 'category_id'];
-     
+    protected $fillable = ['id', 'name_ar', 'name_en',  'description_ar', 'description_en','featured' ,'product_code', 'category_id', 'harvest_sessions', 'sub_title', 'sub_title_ar', 'category_term', 'harvest_essions_ar'];
     //  protected $appends = ['image','favouried','category','category_id','brand','rate','purchased','rated','has_option'];
 
     // protected $guarded = [];

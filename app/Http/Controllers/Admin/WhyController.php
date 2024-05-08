@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\editWhyShooseRequest;
 use App\Models\WhyUs;
 use Illuminate\Http\Request;
 use Session;
@@ -23,7 +24,7 @@ class WhyController extends Controller
         
         return view('admin.why_shoose_us.edit',compact('info'));
     }
-    public function update(Request $request,$id)
+    public function update(editWhyShooseRequest $request,$id)
     {   
         
         $data=$request->all();
@@ -52,4 +53,6 @@ class WhyController extends Controller
         }
         return redirect()->back();
     }
+
+    
 }

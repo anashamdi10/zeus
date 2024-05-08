@@ -32,11 +32,19 @@ class ProductRequest extends FormRequest
             case 'POST':
                 {
                     return array(
-                        // 'name_ar'=>'required',
+                        'name_ar'=>'required',
                         'name_en'=>'required',
-                        // 'description_ar'=>'required',
+                        'description_ar'=>'required',
                         'description_en'=>'required',
                         'main_full'=>'required',
+                        'featured'=>'required',
+                        'product_code'=>'required',
+                        'category_id'=>'required',
+                        'harvest_sessions'=>'required',
+                        'harvest_sessions_ar'=>'required',
+                        'sub_title'=>'required',
+                        'sub_title_ar'=>'required',
+                        'category_term'=>'required',
 
 
                     );
@@ -45,10 +53,19 @@ class ProductRequest extends FormRequest
                 {
 
                     return array(
-                        // 'name_ar'=>'required',
-                        'name_en'=>'required',
-                        // 'description_ar'=>'required',
-                        'description_en'=>'required',
+                        'name_ar' => 'required',
+                        'name_en' => 'required',
+                        'description_ar' => 'required',
+                        'description_en' => 'required',
+                        // 'main_full' => 'required',
+                        'featured' => 'required',
+                        'product_code' => 'required',
+                        'category_id' => 'required',
+                        'harvest_sessions' => 'required',
+                        'harvest_sessions_ar' => 'required',
+                        'sub_title' => 'required',
+                        'sub_title_ar' => 'required',
+                        'category_term' => 'required',
                     );
                 }
             case 'PATCH':

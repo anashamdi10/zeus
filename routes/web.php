@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Site\CategoryController;
 use App\Http\Controllers\HomeController;
@@ -31,7 +32,7 @@ use App\Http\Controllers\Site\AccountController;
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     
-   @include_once('admin_web.php'); 
+    @include_once('admin_web.php'); 
     
     Route::get('/', function () {
     return redirect()->route('index');
@@ -51,6 +52,15 @@ Route::view('modern-layout', 'multiple.modern-layout')->name('modern-layout');
 Route::get('/', [HomeController::class, 'index'])->name('index.show');
 Route::get('/Ar', [HomeController::class, 'indexAr'])->name('indexAr.show');
 Route::get('/contact_page', [HomeController::class, 'contact'])->name('contact_page');
+Route::get('/product_info_en/{id}', [HomeController::class, 'product_info'])->name('info_product');
+Route::get('/product_info_ar/{id}', [HomeController::class, 'product_info_ar'])->name('info_product_ar');
+Route::get('/shop_en', [HomeController::class, 'shop_en'])->name('shop_en');
+Route::get('/shop_ar', [HomeController::class, 'shop_ar'])->name('shop_ar');
+
+Route::post('/shop_en/category_term', [HomeController::class, 'select_sub_category'])->name('sub_category_search');
+Route::post('/shop_en/products_search', [HomeController::class, 'products_search'])->name('product_search');
+Route::post('/shop_en/category_term_ar', [HomeController::class, 'select_sub_category_ar'])->name('sub_category_search_ar');
+Route::post('/shop_en/products_search_ar', [HomeController::class, 'products_search_ar'])->name('product_search_ar');
 
 
 
@@ -70,12 +80,12 @@ Route::get('ajax/notifications', [\App\Http\Controllers\Site\NotificationControl
 
     
     
-   Route::get('/offers', [ProductController::class, 'saleProducts'])->name('offers');
+Route::get('/offers', [ProductController::class, 'saleProducts'])->name('offers');
     // order
-    Route::post('/order_create', [PageController::class, 'order_create'])->name('order_create');
-   
-   
-   Route::get('/featured-products', [ProductController::class, 'featuredProducts'])->name('featured.products');
+Route::post('/order_create', [PageController::class, 'order_create'])->name('order_create');
+
+
+Route::get('/featured-products', [ProductController::class, 'featuredProducts'])->name('featured.products');
 Route::get('/most-seller-products', [ProductController::class, 'mostSellerProducts'])->name('most.seller.products');
 
 Route::get('/toggle_like/{id}', [ProductController::class, 'toggle_like'])->name('toggle_like');
@@ -154,6 +164,8 @@ Route::group(['middleware' => ['auth']], function () {
     //     Route::get('get-city/{id}', [AuthController::class, 'getCities']);
     // });
     Route::put('review/{id}/update', [AboutController::class, 'update'])->name('about.update');
+
+    Route::get('our_services', [ServicesController::class, 'index'])->name('admin.services');
 });
 
 

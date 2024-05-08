@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\CategoryTermController;
 use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\NewletterController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\FlashDealController;
+use App\Http\Controllers\Admin\OurNewsController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\WhyController;
 use App\Http\Controllers\Admin\ServicesController;
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Models\Admin\Counter;
+use App\Models\CategoryTerm;
+use App\Models\Product;
 
 Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
 
@@ -44,6 +48,7 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         
         Route::get('categoryterms-ajax',  '\App\Http\Controllers\Admin\CategoryTermController@index')->name('categoryterms.index');
         Route::view('categoryterms', 'admin.categoryterm.index')->name('category_terms');
+
         Route::get('orders-ajax',  '\App\Http\Controllers\Admin\OrderController@index')->name('orders.index');
         Route::view('orders', 'admin.order.index')->name('admin.orders');
         Route::get('users-ajax',  '\App\Http\Controllers\Admin\UserController@index')->name('users.index');
@@ -185,12 +190,36 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         Route::get('why_shoose_us/{id}/edit', [WhyController::class, 'edit'])->name('why.edit');
         Route::put('why_shoose_us/{id}/update', [WhyController::class, 'update'])->name('why.update');
         
-        Route::get('our_services', [ServicesController::class, 'index'])->name('admin.services');
-        Route::get('our_services/create', [ServicesController::class, 'create'])->name('services.create');
         
+        Route::get('our_services/create', [ServicesController::class, 'create'])->name('services.create');
+        Route::get('our_services/{id}/delete', [ServicesController::class, 'delete'])->name('services.delete');
+        Route::get('our_services/{id}/edit', [ServicesController::class, 'edit'])->name('services.edit');
+        
+        Route::put('our_services/{id}/update', [ServicesController::class, 'update'])->name('services.update');
+        Route::post('our_services/store', [ServicesController::class, 'store'])->name('services.store');
+        
+        
+        
+        
+        Route::get('our_mews', [OurNewsController::class, 'index'])->name('admin.our_news');
+        Route::get('our_mews/create', [OurNewsController::class, 'create'])->name('news.create');
+        Route::get('our_news/{id}/edit', [OurNewsController::class, 'edit'])->name('news.edit');
+        Route::get('our_news/{id}/delete', [OurNewsController::class, 'delete'])->name('news.delete');
+        
+        Route::post('our_mews/store', [OurNewsController::class, 'store'])->name('news.store');
+        Route::put('our_mews/{id}/update', [OurNewsController::class, 'update'])->name('news.update');
+        
+        
+        
+        Route::post('product/create/sub_category', [ProductController::class, 'select_sub_category'])->name('admin.sub_category');
+
+
+
+
+
         // Route::get('about/create', [AboutController::class, 'create'])->name('about.create');
         // Route::post('about/store', [AboutController::class, 'store'])->name('about.store');
-
+        
         
         Route::get('slide/create', '\App\Http\Controllers\Admin\SlideController@create')->name('slides.create');
         Route::post('slide/store', '\App\Http\Controllers\Admin\SlideController@store')->name('slides.store');

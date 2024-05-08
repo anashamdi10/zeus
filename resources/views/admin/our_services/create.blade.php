@@ -1,7 +1,7 @@
 @extends('layouts.default-layout.master')
 
-@section('title'){{ __('main.Edit_Slide') }}
->Our Services
+@section('title')
+Our Services | create
 @endsection
 
 @push('css')
@@ -10,9 +10,9 @@
 @section('content')
 @component('components.breadcrumb')
 @slot('breadcrumb_title')
-<h3>Our Services  </h3>
+<h3>Our Services </h3>
 @endslot
-<li class="breadcrumb-item"> >Our Services  </li>
+<li class="breadcrumb-item"> Our Services </li>
 @slot('breadcrumb_icon')
 @endslot
 @endcomponent
@@ -24,14 +24,14 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action='#' method="post" enctype="multipart/form-data">
+                            <form action={{route('services.store')}} method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
-                                
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label class="col-form-label pt-0" for="title">Title en </label>
-                                            <input class="form-control"  id="title" type="text" name="title">
+                                            <input class="form-control" id="title_en" type="text" name="title_en">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -46,23 +46,24 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label class="col-form-label pt-0" for="sub_title">pragraph en </label>
-                                            <input class="form-control" id="pragraph_en" type="text" name="pragraph_en">
+                                            <textarea class="form-control" name="pragraph_en" id="pragraph_en" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label class="col-form-label pt-0" for="pragraph_ar">pragraph ar </label>
-                                            <input class="form-control"  id="pragraph_ar" type="text" name="pragraph_ar">
+                                            <textarea class="form-control" id="pragraph_ar" name="pragraph_ar" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <input id='image' name="image" type="file" class="form-control" >
+                                    <label class="col-form-label pt-0" for="pragraph_ar">Image </label>
+                                    <input id='image' name="image" type="file" class="form-control">
                                 </div>
-                                
-                               
-                                
+
+
+
 
                                 @if (count($errors) > 0)
                                 <ul>

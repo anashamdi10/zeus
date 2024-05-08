@@ -23,15 +23,15 @@ class HomePageController extends BaseController
     {
         
         if($request->daterange){
-    $dates = explode(' - ', $request->daterange);
-    $dateFrom =date('Y-m-d',strtotime($dates[0]));
-     $dateTo =date('Y-m-d',strtotime($dates[1]));
+        $dates = explode(' - ', $request->daterange);
+        $dateFrom =date('Y-m-d',strtotime($dates[0]));
+        $dateTo =date('Y-m-d',strtotime($dates[1]));
         
 
         $this->setPageTitle('الصفحه الرئيسيه', '  محتواها');
         $users = User::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
-        $cats = Category::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->where('parent_id',null)->get()->count();
-        $subCats = Category::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->where('parent_id' , '!=' ,null)->get()->count();
+        $cats = Category::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->get()->count();
+        $subCats = Category::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->get()->count();
         $orders = Order::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
         // $aproveOrders = Order::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->where('status','approve')->get()->count();
         // $disaproveOrders = Order::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->where('status','disapprove')->count();
@@ -45,8 +45,8 @@ class HomePageController extends BaseController
             
             $this->setPageTitle('الصفحه الرئيسيه', '  محتواها');
         $users = User::whereDate('created_at',Carbon::today())->count();
-        $cats = Category::whereDate('created_at',Carbon::today())->where('parent_id',null)->get()->count();
-        $subCats = Category::whereDate('created_at',Carbon::today())->where('parent_id' , '!=' ,null)->get()->count();
+        $cats = Category::whereDate('created_at',Carbon::today())->get()->count();
+        $subCats = Category::whereDate('created_at',Carbon::today())->get()->count();
         $orders = Order::whereDate('created_at',Carbon::today())->count();
         // $aproveOrders = Order::whereDate('created_at',Carbon::today())->where('status','approve')->get()->count();
         // $disaproveOrders = Order::whereDate('created_at',Carbon::today())->where('status','disapprove')->count();

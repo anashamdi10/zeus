@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Country;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\CategoryTerm;
 use App\Models\Option;
 use App\Models\ProductImage;
 use App\Models\ProductOption;
@@ -57,6 +58,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::select('id', 'name_en')->get();
+        
         $options = Option::select('id', 'name_en')->get();
         $brands = Brand::select('id','name')->get();
         return view('admin.product.create',compact('categories','brands','options'));
@@ -64,17 +66,18 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
+    
         $data=$request->all();
         // dd($data);
         $create = Product::create($data);
         
 //            dd($category);
-            $productcategories = new ProductCategory();
-            $productcategories->product_id = $create->id ;
-            $productcategories->category_id =$request->category_id;
-            $productcategories->save();
+        $productcategories = new ProductCategory();
+        $productcategories->product_id = $create->id ;
+        $productcategories->category_id =$request->category_id;
+        $productcategories->save();
 
-       
+    
         
         foreach($request->images as $idex => $file)
         {
@@ -85,6 +88,7 @@ class ProductController extends Controller
             $productimages->product_id = $create->id ;
             $productimages->full = $image_new_name;
             $productimages->main_full = false;
+            $productimages->sub_main = false;
             $productimages->save();
         }
 
@@ -94,11 +98,28 @@ class ProductController extends Controller
         $filename = time() . '.' . $extension;
         $file->move('uploads/products/', $filename);
         
-        
+        // main images
         $mainImage->product_id = $create->id;
         $mainImage->full = $filename;
         $mainImage->main_full = true;
+        $mainImage->sub_main = false;
         $mainImage->save();
+        
+        // sub main image
+
+        $sub_image = new ProductImage();
+        
+        $file1 = $request->file('sub_main');
+        $extension = $file1->getClientOriginalExtension(); // getting image extension
+        $filename = time() . '.' . $extension;
+        $file1->move('uploads/products/', $filename);
+
+
+        $sub_image->product_id = $create->id;
+        $sub_image->full = $filename;
+        $sub_image->main_full = false;
+        $sub_image->sub_main = true;
+        $sub_image->save();
 
         
             //         if($request->has('option_ids')){
@@ -132,9 +153,6 @@ class ProductController extends Controller
 
             //     ]);
         
-            
-        
-
 
         Session::flash('success','تمت الاضافة بنجاح');
         return redirect()->back();
@@ -145,15 +163,18 @@ class ProductController extends Controller
         $info = Product::find($id);
         $product_id = $info->id;
         $main_image = ProductImage::where(['product_id'=>$product_id , 'main_full'=>true])->value('full');
+        $sub_image = ProductImage::where(['product_id'=>$product_id , 'sub_main'=>true])->value('full');
         
         $images = ProductImage::select('full')->where(['product_id'=>$product_id , 'main_full'=>false])->get();
-
+        
         
         
         $options = Option::select('id','name_ar')->get();
-        $categories = Category::select('id','name_ar')->get();
+        $categories = Category::select('id', 'name_en')->get();
         $brands = Brand::select('id','name')->get();
-        return view('admin.product.edit',compact('info','categories','brands','options', 'main_image', 'images'));
+        $categoryterms = get_cols_where(new CategoryTerm(), array('*'), array('category_id' => $info->category_id));
+
+        return view('admin.product.edit',compact('info','categories','brands','options', 'main_image', 'images', 'categoryterms', 'sub_image'));
     }
 
 
@@ -170,7 +191,7 @@ class ProductController extends Controller
                 $productcategories->product_id = $id;
                 $productcategories->category_id = $request->category_id;
                 $productcategories->save();
-           
+        
 
         if($request->images != null){
             foreach($request->images as $idex=> $file)
@@ -189,6 +210,7 @@ class ProductController extends Controller
                 $productimages->product_id = $id ;
                 $productimages->full = $image_new_name;
                 $productimages->main_full = false;
+                $productimages->sub_main = false;
                 $productimages->save();
             }
         }
@@ -212,7 +234,31 @@ class ProductController extends Controller
             $mainImage->product_id = $id;
             $mainImage->full = $filename;
             $mainImage->main_full = true;
+            $mainImage->sub_main = false;
             $mainImage->save();
+        }
+        if ($request->sub_main != null) {
+            $id_image = get_field_value(new ProductImage(), 'full', array('product_id' => $id, 'sub_main' => true));
+            $oldphotoPath = $id_image;
+            if (file_exists('uploads/products/' . $oldphotoPath) and !empty($oldphotoPath)) {
+                unlink('uploads/products/' . $oldphotoPath);
+            }
+
+            delete(new ProductImage(), array('product_id' => $id, 'full' =>  $oldphotoPath , 'sub_main' => true));
+            
+            
+            $sub_Image = new ProductImage();
+            $file = $request->file('sub_main');
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename = time(). '.' . $extension;
+            $file->move('uploads/products/', $filename);
+
+
+            $sub_Image->product_id = $id;
+            $sub_Image->full = $filename;
+            $sub_Image->main_full = false;
+            $sub_Image->sub_main = true;
+            $sub_Image->save();
         }
 
         Product::find($id)->update($data);
@@ -286,5 +332,13 @@ class ProductController extends Controller
 
         Session::flash('success', 'تم  حدف الصورة  بنجاح');
         return redirect()->back();
+    }
+
+    public function select_sub_category(Request $request){
+        if ($request->ajax()) {
+            $cat_id = $request->category_id ;
+            $categoryterms = get_cols_where(new CategoryTerm(), array('*'), array('category_id'=>$cat_id));
+            return view('admin.product.category_term_ajax', compact('categoryterms'));
+        }
     }
 }

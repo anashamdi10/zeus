@@ -19,7 +19,8 @@
 <?php $__env->slot('breadcrumb_icon'); ?>
 <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
-
+<input type="hidden" id="token_search" value="<?php echo e(csrf_token()); ?>">
+<input type="hidden" id="ajax_subcategory" value="<?php echo e(route('admin.sub_category')); ?>">
 <div class="container-fluid">
     <form action=<?php echo e(route('products.store')); ?> method="post" enctype="multipart/form-data">
         <?php echo e(csrf_field()); ?>
@@ -29,13 +30,31 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group mb-3">
-                            <label class="col-form-label pt-0" for="name_en">Product Name</label>
-                            <input class="form-control" id="name_en" name="name_en">
+                            <label class="col-form-label pt-0" for="name_en">Product Name En</label>
+                            <input class="form-control" id="name_en" name="name_en" type="text">
                         </div>
 
                         <div class="form-group mb-3 ibox-content no-padding">
-                            <label class="col-form-label pt-0" for="name_en"> Description Product </label>
+                            <label class="col-form-label pt-0" for="name_en"> Description Product En </label>
                             <textarea class="ckeditor form-control" rows="4" name="description_en">
+                            <?php echo e(old('description')); ?>
+
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label class="col-form-label pt-0" for="name_ar">Product Name Ar</label>
+                            <input class="form-control" id="name_ar" name="name_ar">
+                        </div>
+
+                        <div class="form-group mb-3 ibox-content no-padding">
+                            <label class="col-form-label pt-0" for="name_ar"> Description Product Ar </label>
+                            <textarea class="ckeditor form-control" rows="4" name="description_ar">
                             <?php echo e(old('description')); ?>
 
                             </textarea>
@@ -51,6 +70,14 @@
 
                 <div class="row mb-4">
                     <h5 class="mb-4">Main Information</h5>
+                    <div class="form-group mb-3 col-6">
+                        <label class="col-form-label pt-0" for="sub_title"> Sub Title </label>
+                        <input class="form-control" id="sub_title" name="sub_title">
+                    </div>
+                    <div class="form-group mb-3 col-6">
+                        <label class="col-form-label pt-0" for="sub_title"> Sub Title Ar </label>
+                        <input class="form-control" id="sub_title_ar" name="sub_title_ar">
+                    </div>
                     <div class="form-group mb-3 col-3">
                         <label class="col-form-label pt-0" for="name_en"> product Code </label>
                         <input class="form-control" id="product_code" name="product_code">
@@ -59,11 +86,14 @@
                     <div class="form-group mb-3 col-3">
                         <label class="col-form-label pt-0" for="name_en"> Category</label>
                         <select name="category_id" id="category_id" class="form-control ">
-                            <option disabled> اختر القسم</option>
+                            <option disabled selected>Choose</option>
                             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($category->id); ?>"><?php echo e($category->name_en); ?></option>
+                            <option value="<?php echo e($category->id); ?>" id="category"><?php echo e($category->name_en); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
+                    </div>
+                    <div class="form-group mb-3 col-3" id='category_term'>
+
                     </div>
                     <div class="form-group mb-3 col-3">
                         <label class="col-form-label pt-0" for="name_en"> Special</label>
@@ -73,21 +103,21 @@
                             <option value="0"> Noا </option>
                         </select>
                     </div>
-                    <!-- <div class="form-group mb-3 col-3">
-                        <label class="col-form-label pt-0" for="name_en"> متاح</label>
-                        <select name="available" id="categories" class="form-control">
-                            <option value="" disabled selected> اختر</option>
-                            <option value="1"> نعم </option>
-                            <option value="0"> لا </option>
-                        </select>
-                    </div> -->
+                    <div class="form-group mb-3 col-3">
+                        <label class="col-form-label pt-0" for="harvest_sessions"> harvest Sessions </label>
+                        <input class="form-control" id="harvest_sessions" name="harvest_sessions" type="text">
+                    </div>
                 </div>
 
                 <h5 class="mb-4"> Product Pictures</h5>
                 <div class="row mb-4">
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 col-md-6">
                         <label class="col-form-label pt-0" for="main_image"> Main Picture </label>
                         <input class="form-control" id="main_full" name="main_full" type="file">
+                    </div>
+                    <div class="form-group mb-3 col-md-6">
+                        <label class="col-form-label pt-0" for="sub_main"> Sub Main Picture </label>
+                        <input class="form-control" id="sub_main" name="sub_main" type="file">
                     </div>
                     <div class="form-group mb-3">
                         <label class="col-form-label pt-0" for="main_image"> Product Pictures </label>
@@ -124,6 +154,33 @@
 <?php $__env->startPush('scripts'); ?>
 <script src="<?php echo e(asset('assets/js/select2/select2.full.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/select2/select2-custom.js')); ?>"></script>
+<script>
+    $(document).ready(function() {
+        $(document).on('change', '#category_id', function(e) {
+            var token = $("#token_search").val();
+            var url = $("#ajax_subcategory").val();
+            var category_id = $("#category_id").val();
+
+            jQuery.ajax({
+                url: url,
+                type: "post",
+                dataType: "html",
+                cache: false,
+                data: {
+                    '_token': token,
+                    category_id: category_id,
+
+                },
+                success: function(data) {
+                    $("#category_term").html(data);
+                },
+                error: function() {
+                    alert("error in add_item");
+                },
+            });
+        })
+    })
+</script>
 <?php $__env->stopPush(); ?>
 
 <?php $__env->stopSection(); ?>
