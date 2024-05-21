@@ -6,7 +6,7 @@
       <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle">    </i></div>
     </div>
     <div class="left-menu-header col">
-      <ul>
+      <!-- <ul>
         <li>
           <form class="form-inline search-form">
             <div class="search-bg"><i class="fa fa-search"></i>
@@ -15,12 +15,12 @@
           </form>
           <span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
         </li>
-      </ul>
+      </ul> -->
     </div>
     <div class="nav-right col pull-right right-menu p-0">
       <ul class="nav-menus">
         <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
-        <li class="onhover-dropdown">
+        <!-- <li class="onhover-dropdown">
           <div class="bookmark-box"><i data-feather="star"></i></div>
           <div class="bookmark-dropdown onhover-show-div">
             <div class="form-group mb-0">
@@ -36,8 +36,8 @@
               <li class="add-to-bookmark"><i class="bookmark-icon" data-feather="airplay"></i>Widgets<span class="pull-right"><i data-feather="star">   </i></span></li>
             </ul>
           </div>
-        </li>
-        <li class="onhover-dropdown">
+        </li> -->
+        <!-- <li class="onhover-dropdown">
           <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
           <ul class="notification-dropdown onhover-show-div">
             <li>
@@ -80,11 +80,11 @@
               </div>
             </li>
           </ul>
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
             <div class="mode"><i class="fa fa-moon-o"></i></div>
-        </li>
-        <li class="onhover-dropdown">
+        </li> -->
+        <!-- <li class="onhover-dropdown">
           <i data-feather="message-square"></i>
           <ul class="chat-dropdown onhover-show-div">
             <li>
@@ -119,7 +119,7 @@
             </li>
             <li class="text-center"> <a class="f-w-700" href="javascript:void(0)">See All</a></li>
           </ul>
-        </li>
+        </li> -->
         <li class="onhover-dropdown p-0">
             <form action="{{route('admin.logout')}}" method="get">
                 @csrf
@@ -127,7 +127,7 @@
             </form>
         </li>
         
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <small>
             {{trans('main.current_lang')}}
@@ -137,7 +137,7 @@
             <li><a class="dropdown-item" hreflang="ar"  href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">العربيه</a></li>
             <li><a class="dropdown-item" hreflang="en"  href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">En </a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="d-lg-none mobile-toggle pull-right w-auto"><i data-feather="more-horizontal"></i></div>

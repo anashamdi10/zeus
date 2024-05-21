@@ -59,15 +59,7 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
-                        <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="percent"></i><span>{{ __('main.Coupons_And_Offers') }} </span></a>
-                        <ul class="nav-submenu menu-content">
-
-                            <li>
-                                <a class="@if(Route::current()->getName() == 'admin.flash.deals') active @endif" href="{{route('admin.flash.deals')}}"><span> {{ __('main.Rabid_Offers') }}</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                    
 
                     <li class="dropdown">
                         <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="info"></i><span>{{ __('main.Site_Data') }} </span></a>
@@ -117,7 +109,7 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a class="nav-link menu-title link-nav @if(Route::current()->getName() == 'admins') active @endif" href="{{route('admins')}}"><i data-feather="settings"></i><span>{{ __('main.Admins') }}</span></a>
                     </li>
                     <li class="dropdown">
@@ -125,7 +117,7 @@
                     </li>
                     <li class="dropdown">
                         <a class="nav-link menu-title link-nav @if(Route::current()->getName() == 'admin.pages') active @endif" href="{{route('admin.pages')}}"><i data-feather="layout"></i><span>{{ __('main.Pages') }}</span></a>
-                    </li>
+                    </li> -->
                     <li class="dropdown">
                         <a class="nav-link menu-title link-nav @if(Route::current()->getName() == 'admin.orders') active @endif" href="{{route('admin.orders')}}"><i data-feather="shopping-cart"></i><span>{{ __('main.Orders') }}</span></a>
                     </li>

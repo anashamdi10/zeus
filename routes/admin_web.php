@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\NewletterController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\FlashDealController;
+use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\OurNewsController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\WhyController;
@@ -50,7 +51,7 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         Route::view('categoryterms', 'admin.categoryterm.index')->name('category_terms');
 
         Route::get('orders-ajax',  '\App\Http\Controllers\Admin\OrderController@index')->name('orders.index');
-        Route::view('orders', 'admin.order.index')->name('admin.orders');
+        
         Route::get('users-ajax',  '\App\Http\Controllers\Admin\UserController@index')->name('users.index');
         Route::view('users', 'admin.user.index')->name('users');
         Route::get('options-ajax',  '\App\Http\Controllers\Admin\OptionController@index')->name('options.index');
@@ -212,8 +213,9 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         
         
         Route::post('product/create/sub_category', [ProductController::class, 'select_sub_category'])->name('admin.sub_category');
-
-
+        Route::get('orders', [HomePageController::class, 'orderIndex'])->name('admin.orders');
+        Route::get('orders/{id}/info', [HomePageController::class, 'orderInfo'])->name('orders.info');
+        
 
 
 

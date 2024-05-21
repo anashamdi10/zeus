@@ -59,15 +59,7 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
-                        <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="percent"></i><span><?php echo e(__('main.Coupons_And_Offers')); ?> </span></a>
-                        <ul class="nav-submenu menu-content">
-
-                            <li>
-                                <a class="<?php if(Route::current()->getName() == 'admin.flash.deals'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.flash.deals')); ?>"><span> <?php echo e(__('main.Rabid_Offers')); ?></span></a>
-                            </li>
-                        </ul>
-                    </li>
+                    
 
                     <li class="dropdown">
                         <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="info"></i><span><?php echo e(__('main.Site_Data')); ?> </span></a>
@@ -117,7 +109,7 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a class="nav-link menu-title link-nav <?php if(Route::current()->getName() == 'admins'): ?> active <?php endif; ?>" href="<?php echo e(route('admins')); ?>"><i data-feather="settings"></i><span><?php echo e(__('main.Admins')); ?></span></a>
                     </li>
                     <li class="dropdown">
@@ -125,7 +117,7 @@
                     </li>
                     <li class="dropdown">
                         <a class="nav-link menu-title link-nav <?php if(Route::current()->getName() == 'admin.pages'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.pages')); ?>"><i data-feather="layout"></i><span><?php echo e(__('main.Pages')); ?></span></a>
-                    </li>
+                    </li> -->
                     <li class="dropdown">
                         <a class="nav-link menu-title link-nav <?php if(Route::current()->getName() == 'admin.orders'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.orders')); ?>"><i data-feather="shopping-cart"></i><span><?php echo e(__('main.Orders')); ?></span></a>
                     </li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\CategoryTerm;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Slide;
@@ -30,30 +31,33 @@ class HomePageController extends BaseController
 
         $this->setPageTitle('الصفحه الرئيسيه', '  محتواها');
         $users = User::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
-        $cats = Category::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->get()->count();
-        $subCats = Category::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->get()->count();
-        $orders = Order::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
+        $cats = Category::all()->count();
+        $orders = Order::all()->count();
         // $aproveOrders = Order::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->where('status','approve')->get()->count();
         // $disaproveOrders = Order::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->where('status','disapprove')->count();
         // $payments = Order::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->where('status','approve')->select('total')->count();
-        $products = Product::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
-         $brands = Brand::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
-         $slides = Slide::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
-         
+        $products = Product::all()->count();
+        $subCats = CategoryTerm::all()->count();
+        $brands = Brand::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
+        $slides = Slide::whereDate('created_at','<=',$dateTo)->whereDate('created_at','>=',$dateFrom)->count();
+        $orders_table = Order::select("product_name", "name", "quantity")->take(5)->get();
         }
         else{
             
             $this->setPageTitle('الصفحه الرئيسيه', '  محتواها');
         $users = User::whereDate('created_at',Carbon::today())->count();
-        $cats = Category::whereDate('created_at',Carbon::today())->get()->count();
-        $subCats = Category::whereDate('created_at',Carbon::today())->get()->count();
-        $orders = Order::whereDate('created_at',Carbon::today())->count();
-        // $aproveOrders = Order::whereDate('created_at',Carbon::today())->where('status','approve')->get()->count();
-        // $disaproveOrders = Order::whereDate('created_at',Carbon::today())->where('status','disapprove')->count();
-        // $payments = Order::whereDate('created_at',Carbon::today())->where('status','approve')->select('total')->count();
-        $products = Product::whereDate('created_at',Carbon::today())->count();
+        $cats = Category::all()->count();
+        $subCats = CategoryTerm::all()->count();
+        $orders = Order::all()->count();
+            // $aproveOrders = Order::whereDate('created_at',Carbon::today())->where('status','approve')->get()->count();
+            // $disaproveOrders = Order::whereDate('created_at',Carbon::today())->where('status','disapprove')->count();
+            // $payments = Order::whereDate('created_at',Carbon::today())->where('status','approve')->select('total')->count();
+        $products = Product::all()->count();
+            
          $brands = Brand::whereDate('created_at',Carbon::today())->count();
          $slides = Slide::whereDate('created_at',Carbon::today())->count();
+        $orders_table = Order::select("product_name", "name", "quantity")->take(5)->get();
+            
         }
         // $new_orders = Order::where('status','disapprove')->count();
         // $done_orders = Order::where('status','received')->count();
@@ -62,7 +66,7 @@ class HomePageController extends BaseController
         $most_orderd= User::select('id','name','image')->take(8)->get();
         $most_sales= Product::select('id','name_ar', 'featured')->paginate(2);
         // $recent_orders = Order::orderBy('created_at', 'DESC')->take(10)->get();
-        $shortages = Product::select('id','name_ar', 'featured')->get();
+        $shortages = Product::select('id', 'name_en', 'product_code', 'harvest_sessions')->get();
         // $total_order_today = Order::whereDate('created_at',Carbon::today())->sum('total');
         // $total_order_yestarday = Order::whereDate('created_at',Carbon::yesterday())->sum('total');
         // $total_order_week = Order::whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('total');
@@ -71,7 +75,7 @@ class HomePageController extends BaseController
         // $total_order_last_month = Order::whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->sum('total');
         // $total_order_year = Order::whereYear('created_at', Carbon::now()->year)->sum('total');
         // $total_order_last_year = Order::whereYear('created_at', '=', Carbon::now()->subYear()->year)->sum('total');
-        return view('admin.index', compact('users','cats','orders','products','subCats','brands','slides','most_orderd','most_sales','shortages',));
+        return view('admin.index', compact('users','cats','orders','products','subCats','brands','slides','most_orderd','most_sales','shortages' , 'orders_table',));
     }
 
     /**
@@ -139,4 +143,20 @@ class HomePageController extends BaseController
     {
         //
     }
+
+    public function orderIndex()
+    {
+        
+        $data = Order::select('id',"product_name", "name" , 'email')->get();
+
+        return view('admin.order.index', ['data' => $data]);
+    }
+    public function orderInfo($id)
+    {
+        $info = Order::find($id);
+        
+
+        return view('admin.order.show', ['info' => $info]);
+    }
+
 }

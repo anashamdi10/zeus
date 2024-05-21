@@ -167,6 +167,10 @@
                         <label class="col-form-label pt-0" for="harvest_sessions"> harvest Sessions </label>
                         <input class="form-control" id="harvest_sessions" name="harvest_sessions" type="text" value="<?php echo e($info->harvest_sessions); ?>">
                     </div>
+                    <div class="form-group mb-3 col-3">
+                        <label class="col-form-label pt-0" for="harvest_sessions"> harvest Sessions ar </label>
+                        <input class="form-control" id="harvest_essions_ar" name="harvest_essions_ar" type="text" value="<?php echo e($info->harvest_essions_ar); ?>">
+                    </div>
                 </div>
 
                 <h5 class="mb-4">Product Image</h5>
