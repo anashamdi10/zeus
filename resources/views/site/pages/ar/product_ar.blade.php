@@ -4,7 +4,7 @@
 {{ __('main.home') }}
 @endsection
 <!-- ======= Header ======= -->
-@include('site.partials.header')
+@include('site.partials.header_ar')
 <!-- End Header -->
 @section('content')
 
@@ -171,4 +171,8 @@
         </div>
     </div>
 </div>
+
+@include('site.partials.footer_ar')
+
+
 @endsection

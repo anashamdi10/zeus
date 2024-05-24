@@ -84,7 +84,7 @@
 <!-- End Hero -->
 
 
-
+@include('site.partials.footer')
 @push('scripts')
 <script>
     $(document).ready(function() {

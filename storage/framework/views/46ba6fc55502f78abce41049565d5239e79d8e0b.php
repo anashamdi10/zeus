@@ -70,11 +70,11 @@
 
                 <div class="row mb-4">
                     <h5 class="mb-4">Main Information</h5>
-                    <div class="form-group mb-3 col-6">
+                    <div class="form-group mb-3 col-3">
                         <label class="col-form-label pt-0" for="sub_title"> Sub Title </label>
                         <input class="form-control" id="sub_title" name="sub_title">
                     </div>
-                    <div class="form-group mb-3 col-6">
+                    <div class="form-group mb-3 col-3">
                         <label class="col-form-label pt-0" for="sub_title"> Sub Title Ar </label>
                         <input class="form-control" id="sub_title_ar" name="sub_title_ar">
                     </div>
@@ -93,7 +93,7 @@
                         </select>
                     </div>
                     <div class="form-group mb-3 col-3" id='category_term'>
-
+                        <label class="col-form-label pt-0" for="name_en"> Sub Category</label>
                     </div>
                     <div class="form-group mb-3 col-3">
                         <label class="col-form-label pt-0" for="name_en"> Special</label>
@@ -104,8 +104,12 @@
                         </select>
                     </div>
                     <div class="form-group mb-3 col-3">
-                        <label class="col-form-label pt-0" for="harvest_sessions"> harvest Sessions </label>
+                        <label class="col-form-label pt-0" for="harvest_sessions"> harvest Sessions en </label>
                         <input class="form-control" id="harvest_sessions" name="harvest_sessions" type="text">
+                    </div>
+                    <div class="form-group mb-3 col-3">
+                        <label class="col-form-label pt-0" for="harvest_sessions"> harvest Sessions ar </label>
+                        <input class="form-control" id="harvest_essions_ar" name="harvest_essions_ar" type="text">
                     </div>
                 </div>
 

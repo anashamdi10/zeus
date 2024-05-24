@@ -26,7 +26,7 @@
                 <div class="swiper-slide">
                     <h2><?php echo e($row['title_ar']); ?></h2>
                     <h4><?php echo e($row['sub_title_ar']); ?></h4>
-                    <a href="<?php echo e($row['link']); ?>" class="btn-get-started scrollto">Get Started</a>
+                    <a href="<?php echo e($row['link']); ?>" class="btn-get-started scrollto">ابدأ</a>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -235,11 +235,11 @@
             <div class="row counters">
                 <div class="col-lg-12 text-center" data-aos="fade-up">
                     <h3>
-                        Join our Zeus' family Now
+                        انضم إلى عائلة زيوس الآن
                         <br />
-                        Export your Products With us
+                        قم بتصدير منتجاتك معنا
                     </h3>
-                    <a href="#contact" class="btn-get-started scrollto">Get In Touch Now </a>
+                    <a href="#contact" class="btn-get-started scrollto">تواصل معنا الآن </a>
                 </div>
             </div>
         </div>
@@ -292,7 +292,7 @@
             <div class="row">
                 <div class="col-lg-12" data-aos="fade-right">
                     <div class="section-title">
-                        <h2>Contact</h2>
+                        <h2>اتصال</h2>
                     </div>
                 </div>
             </div>
@@ -300,7 +300,7 @@
                 <div class="col-lg-4" data-aos="fade-left">
                     <div class="info mt-4">
                         <i class="bx bx-current-location"></i>
-                        <h4>Location:</h4>
+                        <h4> :موقع</h4>
                         <p>
                             Block 9, Zone B3, <br />
                             10TH of Ramdan City, EGYPT<br />
@@ -311,7 +311,7 @@
                     <div class="info">
                         <i class="bx bxs-envelope"></i>
                         <a href="mailto:info@zeus-ex.com">
-                            <h4>Email:</h4>
+                            <h4> : البريد الاكتروني </h4>
                             <p>info@zeus-ex.com</p>
                         </a>
                     </div>
@@ -320,7 +320,7 @@
                     <div class="info w-100 mt-4">
                         <i class="bx bxs-phone-call"></i>
                         <a href="tel:+20111 5522 349">
-                            <h4>Call:</h4>
+                            <h4> : اتصال</h4>
                             <p>(+20) 111 5522 349</p>
                         </a>
                     </div>
@@ -330,24 +330,24 @@
                 <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="text" name="name" class="form-control" id="name" aria-label="your name" placeholder="Your Name" required />
+                            <input type="text" name="name" class="form-control" id="name" aria-label="your name" placeholder="الاسم " required />
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <input type="email" class="form-control" name="email" id="email" aria-label="your name" placeholder="Your Email" required />
+                            <input type="email" class="form-control" name="email" id="email" aria-label="your name" placeholder=" البريد الالكتروني " required />
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="subject" id="subject" aria-label="your name" placeholder="Subject" required />
+                        <input type="text" class="form-control" name="subject" id="subject" aria-label="your name" placeholder="الموضوع " required />
                     </div>
                     <div class="form-group mt-3">
-                        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                        <textarea class="form-control" name="message" rows="5" placeholder="الرسالة" required></textarea>
                     </div>
                     <div class="my-3">
                         <div class="loading">Loading</div>
                         <div class="error-message"></div>
                         <div class="sent-message">Your message has been sent. Thank you!</div>
                     </div>
-                    <div class="text-center"><button type="submit">Send Message</button></div>
+                    <div class="text-center"><button type="submit">ارسال الرسالة</button></div>
                 </form>
             </div>
         </div>
@@ -355,8 +355,7 @@
     <!-- End Contact Section -->
 </main>
 
-<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.partials.footer_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-<?php $__env->startPush('scripts'); ?>
-<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\zeus-website\resources\views/site/pages/ar/index_ar.blade.php ENDPATH**/ ?>

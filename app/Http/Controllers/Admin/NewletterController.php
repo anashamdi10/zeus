@@ -7,7 +7,7 @@ use App\Models\Email;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\NewsletterExport;
-
+use Session;
 class NewletterController extends Controller
 {
     public function index(){
@@ -17,6 +17,7 @@ class NewletterController extends Controller
     }
     public function store(Request $request){
 
+    
         $checkExists_email = get_cols_where_row(new Email(), array("id"), array('email' => $request->email));
         
         if($checkExists_email){
@@ -27,12 +28,14 @@ class NewletterController extends Controller
         $data['updated_at'] = null;
         
         $finish = Email::create($data);
-        
-        if ($finish) {
 
-            return redirect()->back()->with(['errors' => 'Subscribe Complete']);
+        if ($finish) {
+            Session::flash('success', 'تمت الاضافة بنجاح');
+            return redirect()->back();
+        } else {
+            Session::flash('error', 'حدث خطأ ما ');
+            return redirect()->back();
         }
-    
 
         
     }

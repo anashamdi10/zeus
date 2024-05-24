@@ -1,16 +1,28 @@
 <footer id="footer">
-<!-- Grid container -->
-<div class="container p-4 pb-0 text-center footer-newsletter">
-	<!-- Section: Form -->
-	<h4>Join Our Newsletter Now to get all of our news</h4>
-	<form action="" method="post">
-		<input type="email" name="email" aria-label="your name" />
-		<input type="submit" value="Subscribe" aria-label="your name" />
-	</form>
-	<!-- Section: Form -->
-</div>
+	<!-- Grid container -->
+	<div class="container p-4 pb-0 text-center footer-newsletter">
+		<!-- Section: Form -->
+		<h4>Join Our Newsletter Now to get all of our news</h4>
+		<form action="{{route('newsletter.store')}}" method=" post">
+			{{csrf_field()}}
+			<input type="email" name="email" aria-label="your name" />
+			<input type="submit" value="Subscribe" aria-label="your name" />
+		</form>
+		<!-- Section: Form -->
+	</div>
+	@if (Session::has('error'))
 
-<!--	<div class="footer-top">
+	<div class="alert alert-danger outline" style="background-color: red; color: white;">{{Session::get('error')}}</div>
+
+	@endif
+
+
+
+	@if(Session::has('success'))
+	<div class="alert alert-info outline" style="background-color: #9FA6B2; color: white; text-align: center;">{{Session::get('success')}}</div>
+	@endif
+
+	<!--	<div class="footer-top">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-3 col-md-6 footer-contact">
@@ -54,26 +66,26 @@
 				</div>
 			</div>
 		</div> -->
-<div class="container d-md-flex py-4">
-	<div class="me-md-auto text-md-start">
-		<div class="copyright">
-			&copy;2023 Copyright <strong><span>Zeus</span> </strong>. All Rights Reserved
+	<div class="container d-md-flex py-4">
+		<div class="me-md-auto text-md-start">
+			<div class="copyright">
+				&copy;2023 Copyright <strong><span>Zeus</span> </strong>. All Rights Reserved
+			</div>
+			<div class="credits">Designed by <a href="https://opetagency.com" target="_blank">Opetagency</a></div>
 		</div>
-		<div class="credits">Designed by <a href="https://opetagency.com" target="_blank">Opetagency</a></div>
+		<div class="social-links text-center text-md-right pt-3 pt-md-0">
+			<a href="#" class="twitter" target="_blank">
+				<i class="bx bxl-twitter"></i>
+			</a>
+			<a href="#" class="facebook" target="_blank">
+				<i class="bx bxl-facebook"></i>
+			</a>
+			<a href="https://www.instagram.com/exportzeus/" target="_blank" class="instagram">
+				<i class="bx bxl-instagram"></i>
+			</a>
+			<a href="#" class="linkedin" target="_blank">
+				<i class="bx bxl-linkedin"></i>
+			</a>
+		</div>
 	</div>
-	<div class="social-links text-center text-md-right pt-3 pt-md-0">
-		<a href="#" class="twitter" target="_blank">
-			<i class="bx bxl-twitter"></i>
-		</a>
-		<a href="#" class="facebook" target="_blank">
-			<i class="bx bxl-facebook"></i>
-		</a>
-		<a href="https://www.instagram.com/exportzeus/" target="_blank" class="instagram">
-			<i class="bx bxl-instagram"></i>
-		</a>
-		<a href="#" class="linkedin" target="_blank">
-			<i class="bx bxl-linkedin"></i>
-		</a>
-	</div>
-</div>
 </footer>

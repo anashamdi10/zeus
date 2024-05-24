@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\FlashDealController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\OurNewsController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\FacilitiesController;
 use App\Http\Controllers\Admin\WhyController;
 use App\Http\Controllers\Admin\ServicesController;
 use Illuminate\Support\Facades\Route;
@@ -181,7 +182,7 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         // Route::post('slide/createVideo/store', [SlideController::class, 'storeVideo'])->name('slides.video.store');
         
         
-        Route::get('about', [AboutController::class, 'index'])->name('admin.about');
+        
         
         Route::get('counter', [CounterController::class, 'index'])->name('admin.counter');
         Route::put('counter/{id}/update', [CounterController::class, 'update'])->name('counter.update');
@@ -219,9 +220,23 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
 
 
 
-        // Route::get('about/create', [AboutController::class, 'create'])->name('about.create');
-        // Route::post('about/store', [AboutController::class, 'store'])->name('about.store');
+        Route::get('about/create', [AboutController::class, 'create'])->name('about.create');
         
+        Route::post('certificates/store', [AboutController::class, 'store'])->name('certificates.store');
+        Route::get('certificates/{id}/edit', [AboutController::class, 'certificates_edit'])->name('certificates.edit');
+        Route::put('certificates/{id}/update', [AboutController::class, 'certificates_update'])->name('certificates.update');
+        Route::get('certificates/{id}/delete', [AboutController::class, 'delete'])->name('certificates.delete');
+
+
+        Route::get('about', [AboutController::class, 'index'])->name('admin.about');
+        
+        Route::get('facilities', [FacilitiesController::class, 'index'])->name('admin.facilities');
+        Route::get('facilities/create', [FacilitiesController::class, 'create'])->name('facilities.create');
+        Route::get('facilities/{id}/edit', [FacilitiesController::class, 'facilities_edit'])->name('facilities.edit');
+        
+        Route::get('facilities/{id}/update', [FacilitiesController::class, 'facilities_edit'])->name('facilities.edit');
+        Route::put('facilities/{id}/update', [FacilitiesController::class, 'facilities_update'])->name('facilities.update');
+        Route::post('facilities/store', [FacilitiesController::class, 'store'])->name('facilities.store');
         
         Route::get('slide/create', '\App\Http\Controllers\Admin\SlideController@create')->name('slides.create');
         Route::post('slide/store', '\App\Http\Controllers\Admin\SlideController@store')->name('slides.store');
@@ -230,7 +245,7 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         Route::get('products_images/delete/{id}', [ProductController::class, 'products_images_deletes'])->name('product_images.delete');
         
         Route::get('newsletter', [NewletterController::class, 'index'])->name('admin.newsletter');
-        Route::post('newsletter/store', [NewletterController::class, 'store'])->name('newsletter.store');
+    
         Route::get('newsletter/exportToExcel', [NewletterController::class, 'exportToExcel'])->name('newsletter.exportToExcel');
         
         

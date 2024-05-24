@@ -5,7 +5,7 @@
 
 <?php $__env->stopSection(); ?>
 <!-- ======= Header ======= -->
-<?php echo $__env->make('site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('site.partials.header_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- End Header -->
 <?php $__env->startSection('content'); ?>
 <input type="hidden" id="token_search" value="<?php echo e(csrf_token()); ?>">
@@ -84,7 +84,7 @@
 </main>
 <!-- End Hero -->
 
-
+<?php echo $__env->make('site.partials.footer_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <?php $__env->startPush('scripts'); ?>
 <script>

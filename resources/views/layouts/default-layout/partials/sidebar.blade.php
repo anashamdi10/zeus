@@ -59,7 +59,7 @@
                         </ul>
                     </li>
 
-                    
+
 
                     <li class="dropdown">
                         <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="info"></i><span>{{ __('main.Site_Data') }} </span></a>
@@ -81,6 +81,9 @@
 
                             <li>
                                 <a class="@if(Route::current()->getName() == 'admin.services') active @endif" href="{{route('admin.services')}}"><span>our services</span></a>
+                            </li>
+                            <li>
+                                <a class="@if(Route::current()->getName() == 'admin.facilities') active @endif" href="{{route('admin.facilities')}}"><span>Facilities</span></a>
                             </li>
 
                             <li>

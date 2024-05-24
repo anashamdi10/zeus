@@ -109,7 +109,7 @@
                         <h3>Why Choose Zeus for your next shipments</h3>
 
                         <div class="text-center">
-                            <a href="404.html" class="more-btn">Contact Us Now <i class="bx bx-chevron-right"></i></a>
+                            <a href="#" class="more-btn">Contact Us Now <i class="bx bx-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -355,9 +355,8 @@
     </section>
     <!-- End Contact Section -->
 </main>
-
+<?php echo $__env->make('site.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startPush('scripts'); ?>
-<?php $__env->stopPush(); ?>
+
 <?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\zeus-website\resources\views/site/pages/en/index.blade.php ENDPATH**/ ?>

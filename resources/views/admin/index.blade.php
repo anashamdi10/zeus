@@ -1,7 +1,7 @@
 @extends('layouts.default-layout.master')
 
-@section('title'){{ __('main.home') }} -
-{{ $settings->name_ar }}
+@section('title')
+zeus - home
 @endsection
 
 @push('css')

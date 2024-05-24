@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\NewletterController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Site\CategoryController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Site\CartController;
 use App\Http\Controllers\Site\PageController;
 use App\Http\Controllers\Site\CheckoutController;
 use App\Http\Controllers\Site\AccountController;
+use App\Http\Controllers\Site\FacilitiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +58,13 @@ Route::get('/product_info_en/{id}', [HomeController::class, 'product_info'])->na
 Route::get('/product_info_ar/{id}', [HomeController::class, 'product_info_ar'])->name('info_product_ar');
 Route::get('/shop_en', [HomeController::class, 'shop_en'])->name('shop_en');
 Route::get('/shop_ar', [HomeController::class, 'shop_ar'])->name('shop_ar');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/about_ar', [HomeController::class, 'about_ar'])->name('about_ar');
+Route::get('/facilities', [HomeController::class, 'facilities'])->name('facilities_en');
+Route::get('/facilities_ar', [HomeController::class, 'facilities_ar'])->name('facilities_ar');
+
+
+
 
 Route::post('/shop_en/category_term', [HomeController::class, 'select_sub_category'])->name('sub_category_search');
 Route::post('/shop_en/products_search', [HomeController::class, 'products_search'])->name('product_search');
@@ -115,7 +124,7 @@ Route::get('/checkout', [CheckoutController::class, 'getCheckout'])->name('check
 Route::post('/post-checkout', [CheckoutController::class, 'postCheckout'])->name('checkout.post');
 
 Route::get('/{name_en}/{id}', [PageController::class, 'singlePage'])->name('singlePage');
-
+Route::post('Subscribe', [NewletterController::class, 'store'])->name('newsletter.store');
 
 
 

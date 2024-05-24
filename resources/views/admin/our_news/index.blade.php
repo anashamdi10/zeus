@@ -1,6 +1,6 @@
 @extends('layouts.default-layout.master')
 
-@section('title'){{ __('main.Slides') }}
+@section('title')
 Our News
 @endsection
 

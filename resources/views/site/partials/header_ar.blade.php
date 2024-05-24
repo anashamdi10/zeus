@@ -9,12 +9,12 @@
 
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-					<li><a class="nav-link scrollto" href="about.html">About</a></li>
-					<li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
-					<li><a class="nav-link scrollto" href="Facilities.html">Facilities</a></li>
-					<li><a class="nav-link scrollto" href="shop.html">Products</a></li>
-					<li><a class="getstarted scrollto" href="#contact">Reach Us now</a></li>
+					<li><a class="nav-link scrollto active" href="{{route('index.show')}}">صفحة الرئيسية </a></li>
+					<li><a class="nav-link scrollto" href="{{route('about_ar')}}">حول</a></li>
+					<li><a class="nav-link scrollto" href="#services">خدمات</a></li>
+					<li><a class="nav-link scrollto" href="{{route('facilities_ar')}}">مرافق</a></li>
+					<li><a class="nav-link scrollto" href="{{route('shop_ar')}}">منتجات</a></li>
+					<li><a class="getstarted scrollto" href="#contact">تواصل معنا الآن</a></li>
 
 					<li><a class="getstarted scrollto" href="{{route('index.show')}}">En</a></li>
 				</ul>

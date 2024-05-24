@@ -1,6 +1,6 @@
 @extends('layouts.default-layout.master')
 
-@section('title'){{ __('main.Edit_Slide') }}
+@section('title')
 Our services
 @endsection
 

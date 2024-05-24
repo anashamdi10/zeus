@@ -50,9 +50,9 @@
 
   <!-- End Footer -->
 
+  <?php echo $__env->yieldContent('footer'); ?>
 
-
-  <?php echo $__env->make('site.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+  
 
   <?php echo $__env->make('site.partials.scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 

@@ -59,7 +59,7 @@
                         </ul>
                     </li>
 
-                    
+
 
                     <li class="dropdown">
                         <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="info"></i><span><?php echo e(__('main.Site_Data')); ?> </span></a>
@@ -81,6 +81,9 @@
 
                             <li>
                                 <a class="<?php if(Route::current()->getName() == 'admin.services'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.services')); ?>"><span>our services</span></a>
+                            </li>
+                            <li>
+                                <a class="<?php if(Route::current()->getName() == 'admin.facilities'): ?> active <?php endif; ?>" href="<?php echo e(route('admin.facilities')); ?>"><span>Facilities</span></a>
                             </li>
 
                             <li>

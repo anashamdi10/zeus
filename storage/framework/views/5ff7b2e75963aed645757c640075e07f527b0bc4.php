@@ -1,8 +1,9 @@
 
 
-<?php $__env->startSection('title'); ?><?php echo e(__('main.Slides')); ?>
-
+<?php $__env->startSection('title'); ?>
 why shoose us
+<?php echo e($title); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -57,7 +58,7 @@ why shoose us
                         </table>
                     </div>
 
-                   
+
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
 @extends('layouts.default-layout.master')
 
-@section('title'){{ __('main.Slides') }}
+@section('title')
 why shoose us
+{{ $title }}
 @endsection
 
 @section('content')
@@ -56,7 +57,7 @@ why shoose us
                         </table>
                     </div>
 
-                   
+
                 </div>
             </div>
         </div>

@@ -108,7 +108,7 @@
                         <h3>Why Choose Zeus for your next shipments</h3>
 
                         <div class="text-center">
-                            <a href="404.html" class="more-btn">Contact Us Now <i class="bx bx-chevron-right"></i></a>
+                            <a href="#" class="more-btn">Contact Us Now <i class="bx bx-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -354,8 +354,6 @@
     </section>
     <!-- End Contact Section -->
 </main>
-
+@include('site.partials.footer')
 @endsection
 
-@push('scripts')
-@endpush

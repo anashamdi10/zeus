@@ -50,9 +50,9 @@
 
   <!-- End Footer -->
 
+  @yield('footer')
 
-
-  @include('site.partials.footer')
+  
 
   @include('site.partials.scripts')
 

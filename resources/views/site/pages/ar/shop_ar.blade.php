@@ -4,7 +4,7 @@
 {{ __('main.home') }}
 @endsection
 <!-- ======= Header ======= -->
-@include('site.partials.header')
+@include('site.partials.header_ar')
 <!-- End Header -->
 @section('content')
 <input type="hidden" id="token_search" value="{{csrf_token() }}">
@@ -83,7 +83,7 @@
 </main>
 <!-- End Hero -->
 
-
+@include('site.partials.footer_ar')
 
 @push('scripts')
 <script>

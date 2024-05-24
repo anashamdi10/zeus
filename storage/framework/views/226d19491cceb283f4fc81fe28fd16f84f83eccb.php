@@ -1,7 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?><?php echo e(__('main.Slides')); ?>
-
+<?php $__env->startSection('title'); ?>
 Our News
 <?php $__env->stopSection(); ?>
 

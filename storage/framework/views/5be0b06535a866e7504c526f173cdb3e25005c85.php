@@ -34,18 +34,17 @@
 
                                     <div class="col-6">
                                         <div class="form-group mb-3 ibox-content no-padding">
-                                            <label class="col-form-label pt-0" for="name_en"> <?php echo e(__('main.Content_En')); ?></label>
-                                            <input class="form-control" type="text" value="<?php echo e(old('content_en')); ?>" name="content_en">
+                                            <label class="col-form-label pt-0" for="name_en"> Catrgory En</label>
+                                            <input class="form-control" type="text" value="<?php echo e(old('name_en')); ?>" name="name_en">
 
                                         </div>
                                     </div>
 
                                     <div class="col-6">
                                         <div class="form-group mb-3 ibox-content no-padding">
-                                            <label class="col-form-label pt-0" for="name_en"> <?php echo e(__('main.Content_Ar')); ?></label>
+                                            <label class="col-form-label pt-0" for="name_en"> Category Ar</label>
 
-
-                                            <input class="form-control" type="text" value="<?php echo e(old('content_ar')); ?>" name="content_ar">
+                                            <input class="form-control" type="text" value="<?php echo e(old('name_ar')); ?>" name="name_ar">
                                         </div>
                                     </div>
                                 </div>

@@ -9,11 +9,11 @@
 
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-					<li><a class="nav-link scrollto" href="about.html">About</a></li>
+					<li><a class="nav-link scrollto active" href="<?php echo e(route('index.show')); ?>">Home</a></li>
+					<li><a class="nav-link scrollto" href=" <?php echo e(route('about')); ?>">About</a></li>
 					<li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
-					<li><a class="nav-link scrollto" href="Facilities.html">Facilities</a></li>
-					<li><a class="nav-link scrollto" href="shop.html">Products</a></li>
+					<li><a class="nav-link scrollto" href="<?php echo e(route('facilities_en')); ?>">Facilities</a></li>
+					<li><a class="nav-link scrollto" href=" <?php echo e(route('shop_en')); ?>">Products</a></li>
 					<li><a class="getstarted scrollto" href="#contact">Reach Us now</a></li>
 
 					<li><a class="getstarted scrollto" href="<?php echo e(route('indexAr.show')); ?>">AR</a></li>

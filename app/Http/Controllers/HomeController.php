@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Certificates;
 use Cart;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\CategoryTerm;
 use App\Models\Product;
+use App\Models\Facilities;
 
 use App\Models\Slider;
 use App\Models\Video;
@@ -224,6 +226,36 @@ class HomeController extends Controller
 
             return view('site.pages.ar.products_ajax', compact('products'));
         }
+    }
+
+
+    public function about()
+    {
+        $data = get_cols_where_row(new About(), array('*'));
+        $certificates = Certificates::select('id', 'title', 'city', 'image')->get();
+        $counter = Counter::select("id", "facilities", "Porducts", "Produced_Tons_in_2023", 'Oustees_Clients')->get();
+        return view('site.pages.en.about_en',['data'=>$data , 'certificates' => $certificates , 'counter' => $counter]);
+    }
+    public function about_ar()
+    {
+        $data = get_cols_where_row(new About(), array('*'));
+        $certificates = Certificates::select('id', 'title_ar', 'city_ar', 'image')->get();
+        $counter = Counter::select("id", "facilities", "Porducts", "Produced_Tons_in_2023", 'Oustees_Clients')->get();
+        return view('site.pages.ar.about_ar',['data'=>$data , 'certificates' => $certificates , 'counter' => $counter]);
+    }
+
+    public function facilities()
+    {
+        $data = Facilities::select("id", "title", "pragraph", 'image')->get();
+        $counter = Counter::select("id", "facilities", "Porducts", "Produced_Tons_in_2023", 'Oustees_Clients')->get();
+
+        return view('site.pages.en.facilities_en', ['data' => $data , 'counter'=> $counter]);
+    }
+    public function facilities_ar()
+    {
+        $data = Facilities::select("id", "title_ar", "pragraph_ar", 'image')->get();
+        $counter = Counter::select("id", "facilities", "Porducts", "Produced_Tons_in_2023", 'Oustees_Clients')->get();
+        return view('site.pages.ar.facilities_ar', ['data' => $data , 'counter'=> $counter]);
     }
 
 

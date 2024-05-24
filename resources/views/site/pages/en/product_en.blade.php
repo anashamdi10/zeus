@@ -186,5 +186,5 @@
     </div>
 </div>
 <!-- End Hero -->
-
+@include('site.partials.footer')
 @endsection

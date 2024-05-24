@@ -1,7 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?><?php echo e(__('main.Edit_Slide')); ?>
-
+<?php $__env->startSection('title'); ?> Edit
 why shoose us 
 <?php $__env->stopSection(); ?>
 

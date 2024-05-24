@@ -1,8 +1,7 @@
 
 
-<?php $__env->startSection('title'); ?><?php echo e(__('main.home')); ?> -
-<?php echo e($settings->name_ar); ?>
-
+<?php $__env->startSection('title'); ?>
+zeus - home
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('css'); ?>
