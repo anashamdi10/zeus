@@ -127,6 +127,7 @@ Route::get('/{name_en}/{id}', [PageController::class, 'singlePage'])->name('sing
 Route::post('Subscribe', [NewletterController::class, 'store'])->name('newsletter.store');
 
 
+Route::post('contact_us', [NewletterController::class, 'ContactUsStore'])->name('contact_us');
 
 
 

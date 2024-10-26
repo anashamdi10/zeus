@@ -51,16 +51,6 @@
                             @endforeach
                         </select>
                     </div>
-                        
-                    <div class="form-group mb-3">
-                        <label class="col-form-label pt-0" for="name_en">{{ __('main.Sort') }}</label>
-                        <input class="form-control" id="name_en"  value="{{$info->sort}}"  name="sort">
-                    </div>    
-
-                    <div class="form-group mb-3">
-                        <label class="col-form-label pt-0" for="image">{{ __('main.Image') }} </label>
-                        <input class="form-control" id="image" name="image" type="file">
-                    </div>
 
 
                     @if (count($errors) > 0)

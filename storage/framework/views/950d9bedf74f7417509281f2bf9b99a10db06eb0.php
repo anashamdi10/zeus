@@ -328,7 +328,9 @@
                 </div>
             </div>
             <div class="row" data-aos="fade-up">
-                <form action="<?php echo e(route('news.store')); ?>" method="post" role="form" class="php-email-form mt-4">
+                <form action="<?php echo e(route('contact_us')); ?>" method="post" role="form" class="php-email-form mt-4">
+                <?php echo e(csrf_field()); ?>
+
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input type="text" name="name" class="form-control" id="name" aria-label="your name" placeholder="Your Name" required />
@@ -350,6 +352,10 @@
                     </div>
                     <div class="text-center"><button type="submit">Send Message</button></div>
                 </form>
+
+                <?php if(Session::has('success')): ?>
+                    <div class="alert alert-info outline" style="background-color: #9FA6B2; color: white; text-align: center;"><?php echo e(Session::get('success')); ?></div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

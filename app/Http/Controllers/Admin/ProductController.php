@@ -270,7 +270,11 @@ class ProductController extends Controller
         $sub = ProductImage::select('full as img')->where('product_id',$id)->get();
         foreach($sub as $image){
             $file_path = storage_path(). 'uploads/products/'.$image['img'];
-            unlink($file_path); //delete from storage
+            
+            if($file_path !=null){
+
+                unlink($file_path); //delete from storage
+            }
         }
 
          delete(new ProductImage(), array('product_id'=> $id));

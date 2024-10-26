@@ -84,9 +84,6 @@ class CategoryController extends Controller
 
 
     public function destroy($id){
-        $sub = Category::select('image as img')->where('id',$id)->first();
-        $file_path = storage_path().'/app/public/categories/'.$sub['img'];
-        unlink($file_path); //delete from storage
         Category::destroy($id);
         Session::flash('success','تم حذف الخدمه بنجاح..');
         return redirect()->back();

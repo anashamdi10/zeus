@@ -326,7 +326,8 @@
                 </div>
             </div>
             <div class="row" data-aos="fade-up">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+                <form action="{{route('contact_us')}}" method="post" role="form" class="php-email-form mt-4">
+                    {{csrf_field()}}
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input type="text" name="name" class="form-control" id="name" aria-label="your name" placeholder="الاسم " required />

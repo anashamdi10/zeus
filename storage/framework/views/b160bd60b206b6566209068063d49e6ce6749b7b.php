@@ -1,4 +1,3 @@
-<label class="col-form-label pt-0" for="name_en"> Sub Category</label>
 <select class="form-control " name="category_term" id="category_term">
     <option disabled> اختر القسم</option>
     <?php $__currentLoopData = $categoryterms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoryterm): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

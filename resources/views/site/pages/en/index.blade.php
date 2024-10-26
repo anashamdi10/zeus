@@ -327,7 +327,8 @@
                 </div>
             </div>
             <div class="row" data-aos="fade-up">
-                <form action="{{route('news.store')}}" method="post" role="form" class="php-email-form mt-4">
+                <form action="{{route('contact_us')}}" method="post" role="form" class="php-email-form mt-4">
+                {{csrf_field()}}
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input type="text" name="name" class="form-control" id="name" aria-label="your name" placeholder="Your Name" required />
@@ -349,6 +350,10 @@
                     </div>
                     <div class="text-center"><button type="submit">Send Message</button></div>
                 </form>
+
+                @if(Session::has('success'))
+                    <div class="alert alert-info outline" style="background-color: #9FA6B2; color: white; text-align: center;">{{Session::get('success')}}</div>
+                @endif
             </div>
         </div>
     </section>

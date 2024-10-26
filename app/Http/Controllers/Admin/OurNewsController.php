@@ -21,7 +21,8 @@ class OurNewsController extends Controller
     }
 
     public function store(NewsRequest $request)
-    {
+    {   
+        
         $data = $request->all();
 
         // save image

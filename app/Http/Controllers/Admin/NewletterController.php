@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Email;
-use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\NewsletterExport;
 use Session;
+use App\Models\Email;
+use App\Models\Contact;
+use Illuminate\Http\Request;
+use App\Exports\NewsletterExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+
 class NewletterController extends Controller
 {
     public function index(){
@@ -42,5 +44,30 @@ class NewletterController extends Controller
 
     public function exportToExcel(){
         return Excel::download(new NewsletterExport , 'Newletter.xlsx');
+    }
+
+    public function ContactUsStore(Request $request){
+
+
+        $data['email'] = $request->email;
+        $data['name'] = $request->name;
+        $data['subject'] = $request->subject;
+        $data['message'] = $request->message;
+        $data['created_at'] = date("Y-m-d H:i:s");
+        $data['updated_at'] = null;
+        
+        $finish = Contact::create($data);
+
+        if ($finish) {
+            Session::flash('success', 'تمت الاضافة بنجاح');
+           
+        } else {
+            Session::flash('error', 'حدث خطأ ما ');
+            
+        }
+
+         return redirect()->route('route.name');;
+
+        
     }
 }
