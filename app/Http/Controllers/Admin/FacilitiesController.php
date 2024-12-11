@@ -80,5 +80,27 @@ class FacilitiesController extends Controller
         return redirect()->back();
     }
 
+
+    public function delete($id)
+    {
+
+        
+        $our_news = Facilities::find($id);
+            
+        $old_image = $our_news->image;
+        if( $old_image != null ){
+            if (file_exists('uploads/news/' . $old_image) and !empty($old_image)) {
+                unlink('uploads/news/' . $old_image);
+            }
+        }
+
+        
+        Facilities::destroy($id);
+        
+
+        Session::flash('success', 'تم حذف الخدمه بنجاح..');
+        return redirect()->back();
+    }
+
     
 }

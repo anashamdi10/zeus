@@ -80,12 +80,17 @@ class OurNewsController extends Controller
     public function delete($id)
     {
         // delete old image
-
+        
         $our_news = our_news::find($id);
+            
         $old_image = $our_news->image;
-        if (file_exists('uploads/news/' . $old_image) and !empty($old_image)) {
-            unlink('uploads/news/' . $old_image);
+        if( $old_image != null ){
+            if (file_exists('uploads/news/' . $old_image) and !empty($old_image)) {
+                unlink('uploads/news/' . $old_image);
+            }
         }
+
+        
         $flag = delete(new our_news(), array('id' => $id));
         if ($flag) {
             Session::flash('success', 'تم الحذف بنجاح..');

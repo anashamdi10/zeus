@@ -171,18 +171,17 @@
     </section>
     <!-- End Services Section -->
     <!-- Start Product Section -->
-    <div class="product-section">
+    
+    <!-- <div class="product-section">
         <div class="container">
             <div class="row">
-                <!-- Start Column 1 -->
+               
                 <div class="col-md-12 col-lg-3 mb-5 mb-lg-0" data-aos="fade-right">
                     <h2 class="mb-4 section-title text-center fw-bold text-capitalize">Get your finest Product</h2>
 
                     <p class="text-left"><a href="{{route('shop_en')}}" class="btn-get-started scrollto">Explore More</a></p>
                 </div>
-                <!-- End Column 1 -->
-
-                <!-- Start Column 2 -->
+               
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
 
                     <a class="product-item" href="{{ route('info_product', $products_Featured[0]['id']) }}">
@@ -195,9 +194,7 @@
                         </span>
                     </a>
                 </div>
-                <!-- End Column 2 -->
-
-                <!-- Start Column 3 -->
+                
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
                     <a class="product-item" href="{{ route('info_product', $products_Featured[1]['id']) }}">
                         <img src="{{ asset('uploads/products/' . $products_Featured[1]['main_image'][0]['full']) }}" onmouseover="this.src='{{asset("uploads/products/" .$products_Featured[1]['sub_image'][0]['full'] )}}'" onmouseout="this.src='{{asset("uploads/products/" .$products_Featured[1]['main_image'][0]['full'] )}}'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
@@ -209,9 +206,7 @@
                         </span>
                     </a>
                 </div>
-                <!-- End Column 3 -->
-
-                <!-- Start Column 4 -->
+                
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" data-aos="fade-left">
                     <a class="product-item" href="{{ route('info_product', $products_Featured[2]['id']) }}">
                         <img src="{{ asset('uploads/products/' . $products_Featured[2]['main_image'][0]['full']) }}" onmouseover="this.src='{{asset("uploads/products/" .$products_Featured[2]['sub_image'][0]['full'] )}}'" onmouseout="this.src='{{asset("uploads/products/" .$products_Featured[2]['main_image'][0]['full'] )}}'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
@@ -223,10 +218,10 @@
                         </span>
                     </a>
                 </div>
-                <!-- End Column 4 -->
+                
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- End Product Section -->
 
     <!-- ======= Counts Section ======= -->

@@ -47,8 +47,8 @@ Our News
                                     <td>{{$info->writer_en}}</td>
                                     <td>{{$info->title_en}}</td>
                                     <td>{{$info->pragraph_en}}</td>
-
-
+                                    
+                                    
 
                                     <td>
                                         <a href="{{ route('news.edit', $info->id) }}" class="btn btn-primary btn-sm">Edit</a>

@@ -52,7 +52,7 @@ Facilities
 
                                     <td>
                                         <a href="<?php echo e(route('facilities.edit', $info->id)); ?>" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="<?php echo e(route('news.delete',$info->id)); ?>" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="<?php echo e(route('facilities.delete',$info->id)); ?>" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

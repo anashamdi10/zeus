@@ -271,10 +271,10 @@ class ProductController extends Controller
         foreach($sub as $image){
             $file_path = storage_path(). 'uploads/products/'.$image['img'];
             
-            if($file_path !=null){
-
-                unlink($file_path); //delete from storage
+            if (file_exists('uploads/products/' . $file_path)) {
+                unlink('uploads/products/' . $file_path);
             }
+           
         }
 
          delete(new ProductImage(), array('product_id'=> $id));

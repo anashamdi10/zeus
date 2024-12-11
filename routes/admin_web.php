@@ -184,6 +184,7 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         
         
         
+        
         Route::get('counter', [CounterController::class, 'index'])->name('admin.counter');
         Route::put('counter/{id}/update', [CounterController::class, 'update'])->name('counter.update');
         
@@ -237,6 +238,7 @@ Route::group(['prefix'  =>  'cpadmin','namespace'=>'Admin'], function () {
         Route::get('facilities/{id}/update', [FacilitiesController::class, 'facilities_edit'])->name('facilities.edit');
         Route::put('facilities/{id}/update', [FacilitiesController::class, 'facilities_update'])->name('facilities.update');
         Route::post('facilities/store', [FacilitiesController::class, 'store'])->name('facilities.store');
+        Route::get('facilities/delete/{id}', [FacilitiesController::class, 'delete'])->name('facilities.delete');
         
         Route::get('slide/create', '\App\Http\Controllers\Admin\SlideController@create')->name('slides.create');
         Route::post('slide/store', '\App\Http\Controllers\Admin\SlideController@store')->name('slides.store');

@@ -48,10 +48,7 @@
 
                     <!-- Color Start -->
 
-                    <div class="bg-light p-4 mb-30" id='category_term'>
-
-                    </div>
-
+                    
                 </div>
                 <!-- Shop Sidebar End -->
 

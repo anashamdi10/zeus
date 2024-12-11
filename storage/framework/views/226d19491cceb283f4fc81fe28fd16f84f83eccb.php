@@ -47,8 +47,8 @@ Our News
                                     <td><?php echo e($info->writer_en); ?></td>
                                     <td><?php echo e($info->title_en); ?></td>
                                     <td><?php echo e($info->pragraph_en); ?></td>
-
-
+                                    
+                                    
 
                                     <td>
                                         <a href="<?php echo e(route('news.edit', $info->id)); ?>" class="btn btn-primary btn-sm">Edit</a>
