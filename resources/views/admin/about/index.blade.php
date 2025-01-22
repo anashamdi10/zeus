@@ -22,7 +22,7 @@ About
                 <div class="card-body">
                     <div class="table-responsive">
 
-                        <form action="{{route('about.update',1)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('about.update')}}" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{method_field('PUT')}}
                             <div class=" mb-3">

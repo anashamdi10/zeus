@@ -5,18 +5,18 @@
 
 <?php $__env->stopSection(); ?>
 <!-- ======= Header ======= -->
-<?php echo $__env->make('site.partials.header_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- End Header -->
 <?php $__env->startSection('content'); ?>
 <input type="hidden" id="token_search" value="<?php echo e(csrf_token()); ?>">
-<input type="hidden" id="ajax_subcategory" value="<?php echo e(route('sub_category_search_ar')); ?>">
-<input type="hidden" id="ajax_product" value="<?php echo e(route('product_search_ar')); ?>">
+<input type="hidden" id="ajax_subcategory" value="<?php echo e(route('sub_category_search')); ?>">
+<input type="hidden" id="ajax_product" value="<?php echo e(route('product_search')); ?>">
 <main id="main">
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center text-right">
-                <h2>منتجات زيوس</h2>
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Zeus' Facilities</h2>
             </div>
         </div>
     </section>
@@ -29,18 +29,18 @@
                 <div class="col-lg-3 col-md-4">
                     <!-- Price Start -->
                     <h5 class="section-title position-relative text-uppercase mb-3">
-                        <span class="pr-3">تصفية حسب الفئة</span>
+                        <span class="pr-3">Filter by Category</span>
                     </h5>
                     <div class="px-4 mb-30">
 
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" id="category" name="category" value="code">
-                            <label class="custom-control-label" for="category-1">الكل </label>
+                            <label class="custom-control-label" for="category-1">All </label>
                         </div>
                         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input id="category" type="radio" name="category" value="<?php echo e($category->id); ?>">
-                            <label class="custom-control-label" for="category-2"><?php echo e($category->name_ar); ?></label>
+                            <label class="custom-control-label" for="category-2"><?php echo e($category->name_en); ?></label>
                         </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -68,7 +68,7 @@
 
                                 </div>
                                 <div class="text-center py-4">
-                                    <a class="h6 text-decoration-none text-truncate fw-bolder" href="<?php echo e(route('info_product', $product->id)); ?>"><?php echo e($product->name_ar); ?></a>
+                                    <a class="h6 text-decoration-none text-truncate fw-bolder" href="<?php echo e(route('info_product', $product->id)); ?>"><?php echo e($product->name_en); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -84,8 +84,8 @@
 </main>
 <!-- End Hero -->
 
-<?php echo $__env->make('site.partials.footer_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
+<?php echo $__env->make('site.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->startPush('scripts'); ?>
 <script>
     $(document).ready(function() {
@@ -173,4 +173,4 @@
 <?php $__env->stopPush(); ?>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\git\resources\views/site/pages/ar/shop_ar.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/uldghn4ssl8p/zeus-ex.com/resources/views/site/pages/en/shop_en.blade.php ENDPATH**/ ?>

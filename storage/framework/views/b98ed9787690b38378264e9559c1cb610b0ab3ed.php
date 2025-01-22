@@ -5,7 +5,7 @@
 
 <?php $__env->stopSection(); ?>
 <!-- ======= Header ======= -->
-<?php echo $__env->make('site.partials.header_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- End Header -->
 <?php $__env->startSection('content'); ?>
 
@@ -14,11 +14,11 @@
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <h2><?php echo e($productInfo->name_ar); ?></h2>
+                <h2><?php echo e($productInfo->name_en); ?></h2>
                 <ol>
                     <li><?php echo e($category_name); ?></li>
                     <li><?php echo e($category_term); ?></li>
-                    <li><?php echo e($productInfo->name_ar); ?></li>
+                    <li><?php echo e($productInfo->name_en); ?></li>
                 </ol>
             </div>
         </div>
@@ -45,14 +45,14 @@
 
                 <div class="col-lg-4">
                     <div class="portfolio-info">
-                        <h3>معلومات المشروع</h3>
+                        <h3>Project information</h3>
                         <ul>
-                            <li><strong>فئة</strong>: <?php echo e($category_name); ?></li>
-                            <li><strong>جلسات الحصاد </strong>: <?php echo e($productInfo->harvest_sessions); ?></li>
+                            <li><strong>Category</strong>: <?php echo e($category_name); ?></li>
+                            <li><strong>harvest Sessions </strong>: <?php echo e($productInfo->harvest_sessions); ?></li>
                         </ul>
 
                         <button type="button" class="btn" style="background-color: #4f6f52; color: white;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            إطلب الان
+                            Order Now
                         </button>
                     </div>
                 </div>
@@ -60,16 +60,32 @@
             <div class="row gy-4">
                 <div class="portfolio-description">
                     <p>
-                        <?php echo $productInfo->description_ar; ?>
+                        <?php echo $productInfo->description_en; ?>
 
                     </p>
                 </div>
             </div>
+
+
+
+            <?php if(session('success')): ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo e(session('success')); ?>
+
+            </div>
+            <?php endif; ?>
+            <?php if(session('error')): ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo e(session('error')); ?>
+
+            </div>
+            <?php endif; ?>
+
             <div class="row gy-4">
                 <div class="product-section">
                     <div class="container">
                         <div class="section-title" data-aos="fade-right">
-                            <h2>منتجات ذات صله </h2>
+                            <h2>Related Products</h2>
                         </div>
                         <div class="row">
 
@@ -81,8 +97,8 @@
                                 <a class="product-item" href="<?php echo e(route('info_product', $product['id'])); ?>">
                                     <img src="<?php echo e(asset('uploads/products/' . $product['main_image'][0]['full'])); ?>" onmouseover="this.src='<?php echo e(asset("uploads/products/" .$product['sub_image'][0]['full'] )); ?>'" onmouseout="this.src='<?php echo e(asset("uploads/products/" .$product['main_image'][0]['full'] )); ?>'" alt="ptoduct-img" class="img-fluid product-thumbnail" />
 
-                                    <h3 class="product-title"><?php echo e($product->name_ar); ?></h3>
-                                    <strong class="product-price"><?php echo e($product->sub_title_ar); ?></strong>
+                                    <h3 class="product-title"><?php echo e($product->name_en); ?></h3>
+                                    <strong class="product-price"><?php echo e($product->sub_title); ?></strong>
 
                                     <span class="icon-cross">
                                         <i class="bx bxs-right-top-arrow-circle bx-md bx-tada-hover"></i>
@@ -96,10 +112,13 @@
                 </div>
             </div>
         </div>
+
+
+
     </section>
     <!-- End Portfolio Details Section -->
 </main>
-<!-- End Hero -->
+
 <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
 
@@ -114,35 +133,18 @@
                     <?php echo e(csrf_field()); ?>
 
                     <div class="row">
-
-                        <div class="col-6" style="text-align: right">
+                        <div class="col-6">
+                            <label for="product_name"> Product Name : </label>
+                            <span><?php echo e($productInfo->name_en); ?></span>
+                            <input style="display: none;" value="<?php echo e($productInfo->name_en); ?>" class="form-control" id="product_name" name="product_name">
+                        </div>
+                        <div class="col-6">
+                            <label for="product_name"> Product Code : </label>
                             <span><?php echo e($productInfo->product_code); ?></span>
-                            <label for="product_name"> : كود المنتج </label>
                             <input style="display: none;" value="<?php echo e($productInfo->product_code); ?>" class="form-control" id="product_code" name="product_code">
                         </div>
-                        <div class="col-6" style="text-align: right">
-                            <span><?php echo e($productInfo->name_ar); ?></span>
-                            <label for="product_name"> : اسم المنتج </label>
-                            <input style="display: none;" value="<?php echo e($productInfo->name_ar); ?>" class="form-control" id="product_name" name="product_name">
-                        </div>
-
-                        <div class="col-6" style="margin-top: 10px; margin-bottom: 10px;text-align: right">
-                            <label for="product_name" style="margin-top: 5px; margin-bottom: 5px;"> : البريد الإلكتروني </label>
-                            <input type="email" class="form-control" style="border: 1px solid black;" id="email" name="email">
-
-                            <?php $__errorArgs = ['email'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                            <span class="text-danger"><?php echo e($message); ?></span>
-                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        </div>
-                        <div class="col-6" style="margin-top: 10px; margin-bottom: 10px;text-align: right">
-                            <label for="product_name" style="margin-top: 5px; margin-bottom: 5px; "> : الاسم </label>
+                        <div class="col-6" style="margin-top: 10px; margin-bottom: 10px;">
+                            <label for="product_name" style="margin-top: 5px; margin-bottom: 5px;"> Name : </label>
                             <input class="form-control" style="border: 1px solid black;" id="name" name="name">
 
                             <?php $__errorArgs = ['name'];
@@ -156,11 +158,11 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
+                        <div class="col-6" style="margin-top: 10px; margin-bottom: 10px;">
+                            <label for="product_name" style="margin-top: 5px; margin-bottom: 5px;"> Email : </label>
+                            <input type="email" class="form-control" style="border: 1px solid black;" id="email" name="email">
 
-                        <div class="col-6" style="text-align: right">
-                            <label for="product_name" style="margin-top: 10px; margin-bottom: 10px;"> : الكمية </label>
-                            <input type="number" class="form-control" style="border: 1px solid black;" id="quantity" name="quantity">
-                            <?php $__errorArgs = ['quantity'];
+                            <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -171,8 +173,8 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
-                        <div class="col-6" style="text-align: right">
-                            <label for="product_name" style="margin-top: 10px; margin-bottom: 10px"> : الجوال </label>
+                        <div class="col-6">
+                            <label for="product_name" style="margin-top: 10px; margin-bottom: 10px;"> Mobile : </label>
                             <input type="tel" class="form-control" style="border: 1px solid black;" id="mobile" name="mobile">
 
                             <?php $__errorArgs = ['mobile'];
@@ -186,8 +188,22 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
-                        <div class="col-12" style="text-align: right">
-                            <label for="product_name" style="margin-top: 10px; margin-bottom: 10px;text-align: right;"> : ملاحظات </label>
+                        <div class="col-6">
+                            <label for="product_name" style="margin-top: 10px; margin-bottom: 10px;"> Quantity : </label>
+                            <input type="number" class="form-control" style="border: 1px solid black;" id="quantity" name="quantity">
+                            <?php $__errorArgs = ['quantity'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="text-danger"><?php echo e($message); ?></span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+                        <div class="col-12">
+                            <label for="product_name" style="margin-top: 10px; margin-bottom: 10px;"> Notes : </label>
                             <textarea class="form-control" id="notes" style="border: 1px solid black;" name="notes"></textarea>
                         </div>
 
@@ -202,9 +218,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </div>
-
-<?php echo $__env->make('site.partials.footer_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
-
+<!-- End Hero -->
+<?php echo $__env->make('site.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/s2758queo60r/zeus-ex.com/resources/views/site/pages/ar/product_ar.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/uldghn4ssl8p/zeus-ex.com/resources/views/site/pages/en/product_en.blade.php ENDPATH**/ ?>

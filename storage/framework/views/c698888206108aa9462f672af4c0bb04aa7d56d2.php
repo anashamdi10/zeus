@@ -1,12 +1,9 @@
-
-
-<?php $__env->startSection('title'); ?>login
-<?php echo e($title); ?>
+<?php $__env->startSection('title'); ?>
+login <?php echo e($title); ?>
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startPush('css'); ?>
-<?php $__env->stopPush(); ?>
+
 
 <?php $__env->startSection('content'); ?>
     <section>

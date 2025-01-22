@@ -14,6 +14,7 @@ use App\Http\Controllers\Site\UserController;
 use App\Http\Controllers\Site\CartController;
 use App\Http\Controllers\Site\PageController;
 use App\Http\Controllers\Site\CheckoutController;
+
 use App\Http\Controllers\Site\AccountController;
 use App\Http\Controllers\Site\FacilitiesController;
 
@@ -173,9 +174,10 @@ Route::group(['middleware' => ['auth']], function () {
     //     Route::get('/forget-password', [AuthController::class, 'forgetPassword'])->name('forgetpassword');
     //     Route::get('get-city/{id}', [AuthController::class, 'getCities']);
     // });
-    Route::put('review/{id}/update', [AboutController::class, 'update'])->name('about.update');
+    Route::put('review/update', [AboutController::class, 'update'])->name('about.update');
 
     Route::get('our_services', [ServicesController::class, 'index'])->name('admin.services');
+
 });
 
 

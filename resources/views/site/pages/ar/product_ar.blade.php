@@ -113,14 +113,14 @@
                     <div class="row">
 
                         <div class="col-6" style="text-align: right">
-                            <span>{{$product->product_code}}</span>
+                            <span>{{$productInfo->product_code}}</span>
                             <label for="product_name"> : كود المنتج </label>
-                            <input style="display: none;" value="{{$product->product_code}}" class="form-control" id="product_code" name="product_code">
+                            <input style="display: none;" value="{{$productInfo->product_code}}" class="form-control" id="product_code" name="product_code">
                         </div>
                         <div class="col-6" style="text-align: right">
-                            <span>{{$product->name_ar}}</span>
+                            <span>{{$productInfo->name_ar}}</span>
                             <label for="product_name"> : اسم المنتج </label>
-                            <input style="display: none;" value="{{$product->name_ar}}" class="form-control" id="product_name" name="product_name">
+                            <input style="display: none;" value="{{$productInfo->name_ar}}" class="form-control" id="product_name" name="product_name">
                         </div>
 
                         <div class="col-6" style="margin-top: 10px; margin-bottom: 10px;text-align: right">

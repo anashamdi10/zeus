@@ -135,13 +135,13 @@
                     <div class="row">
                         <div class="col-6">
                             <label for="product_name"> Product Name : </label>
-                            <span><?php echo e($product->name_en); ?></span>
-                            <input style="display: none;" value="<?php echo e($product->name_en); ?>" class="form-control" id="product_name" name="product_name">
+                            <span><?php echo e($productInfo->name_en); ?></span>
+                            <input style="display: none;" value="<?php echo e($productInfo->name_en); ?>" class="form-control" id="product_name" name="product_name">
                         </div>
                         <div class="col-6">
                             <label for="product_name"> Product Code : </label>
-                            <span><?php echo e($product->product_code); ?></span>
-                            <input style="display: none;" value="<?php echo e($product->product_code); ?>" class="form-control" id="product_code" name="product_code">
+                            <span><?php echo e($productInfo->product_code); ?></span>
+                            <input style="display: none;" value="<?php echo e($productInfo->product_code); ?>" class="form-control" id="product_code" name="product_code">
                         </div>
                         <div class="col-6" style="margin-top: 10px; margin-bottom: 10px;">
                             <label for="product_name" style="margin-top: 5px; margin-bottom: 5px;"> Name : </label>

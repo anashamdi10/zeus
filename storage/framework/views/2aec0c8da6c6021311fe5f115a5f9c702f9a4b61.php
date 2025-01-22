@@ -1,0 +1,195 @@
+
+
+<?php $__env->startSection('title'); ?>
+<?php echo e(__('main.home')); ?>
+
+<?php $__env->stopSection(); ?>
+<!-- ======= Header ======= -->
+<?php echo $__env->make('site.partials.header_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<!-- End Header -->
+<?php $__env->startSection('content'); ?>
+
+
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>عن زيوس</h2>
+                <ol>
+                    <li><a href="index.html">صفحة الرئيسية</a></li>
+                    <li>عن زيوس</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row content">
+                <div class="col-lg-5" data-aos="fade-right" data-aos-delay="200">
+                    <img class="about-img" src="<?php echo e(asset('uploads/about/' . $data->image)); ?>" alt="about" />
+                </div>
+                <div class="col-lg-7 pt-4 pt-lg-0 justify-content-center" data-aos="fade-left" data-aos-delay="100">
+                    <h1><?php echo e($data->title_ar); ?></h1>
+                    <p><?php echo e($data->pragraph_ar); ?></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Section -->
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <div class="section-title" data-aos="fade-right">
+                    <h2>Our certificates</h2>
+                    <p>
+                        <?php echo e($data->title_certificates); ?>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper swi">
+            <div class="swiper-wrapper">
+                <!-- ======= Slide  Section ======= -->
+
+                <?php $__currentLoopData = $certificates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $info): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="swiper-slide" style="
+								background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+									url('<?php echo e(asset('uploads/certificates/' . $info->image)); ?>') no-repeat 50% 50% / cover;
+							">
+                    <div>
+                        <h2><?php echo e($info->title_ar); ?></h2>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                            </svg>
+                            <?php echo e($info->city_ar); ?>
+
+                        </p>
+                    </div>
+                </div>
+
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <!-- ======= Slide  Section ======= -->
+
+            </div>
+            <!-- Add Pagination -->
+            <!-- If we need pagination -->
+            <div class="news-slider__pagination"></div>
+        </div>
+    </section>
+    <!-- End Clients Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+        <div class="container">
+            <div class="row counters">
+                <?php $__currentLoopData = $counter; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="bx bxs-building bx-lg"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->facilities); ?>" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>مرافق</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="bx bxs-leaf bx-lg"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Porducts); ?>" data-purecounter-duration="2" class="purecounter"></span>
+                    <p>منتجات</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="bx bxs-package bx-lg"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Produced_Tons_in_2023); ?>" data-purecounter-duration="3" class="purecounter"></span>
+                    <p>إنتاج طن في عام 2023</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="bx bxs-user bx-lg"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="<?php echo e($row->Oustees_Clients); ?>" data-purecounter-duration="4" class="purecounter"></span>
+                    <p>عملاء الغرباء</p>
+                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+        </div>
+    </section>
+    <!-- End Counts Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" data-aos="fade-right">
+                    <div class="section-title">
+                        <h2>اتصال</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="info mt-4">
+                        <i class="bx bx-current-location"></i>
+                        <h4> :موقع</h4>
+                        <p>
+                            Block 9, Zone B3, <br />
+                            10TH of Ramdan City, EGYPT<br />
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-4" data-aos="fade-left">
+                    <div class="info">
+                        <i class="bx bxs-envelope"></i>
+                        <a href="mailto:info@zeus-ex.com">
+                            <h4> : البريد الاكتروني </h4>
+                            <p>info@zeus-ex.com</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="info w-100 mt-4">
+                        <i class="bx bxs-phone-call"></i>
+                        <a href="tel:+20111 5522 349">
+                            <h4> : اتصال</h4>
+                            <p>(+20) 111 5522 349</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row" data-aos="fade-up">
+                <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="name" class="form-control" id="name" aria-label="your name" placeholder="الاسم " required />
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="email" id="email" aria-label="your name" placeholder=" البريد الالكتروني " required />
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="subject" id="subject" aria-label="your name" placeholder="الموضوع " required />
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="message" rows="5" placeholder="الرسالة" required></textarea>
+                    </div>
+                    <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+                    <div class="text-center"><button type="submit">ارسال الرسالة</button></div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Section -->
+</main>
+
+
+<?php echo $__env->make('site.partials.footer_ar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/uldghn4ssl8p/zeus-ex.com/resources/views/site/pages/ar/about_ar.blade.php ENDPATH**/ ?>

@@ -60,7 +60,7 @@ class AboutController extends Controller
 
             // delete old image
 
-            $about = About::find($id);
+            $about = About::find(1);
             $old_image = $about->image;
             if (file_exists('uploads/about/' . $old_image) and !empty($old_image)) {
                 unlink('uploads/about/' . $old_image);

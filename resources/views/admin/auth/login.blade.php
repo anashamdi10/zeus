@@ -1,11 +1,10 @@
 @extends('admin.auth.master')
 
-@section('title')login
-{{ $title }}
+@section('title')
+login {{ $title }}
 @endsection
 
-@push('css')
-@endpush
+
 
 @section('content')
     <section>
